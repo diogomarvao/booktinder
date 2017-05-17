@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> Book Chooser </title>
+	
+		<!-- <meta charset="utf-8"> -->
+		<link rel="stylesheet" type="text/css" href="CSS/bootstrap.css">
+		<link rel="stylesheet" type="text/css" href="CSS/style.css">
+		<link href="../fonts/orc-horde.horde-bb.ttf" rel="stylesheet">
+			
+</head>
+<body>
+
+<div class="container-fluid">
+
+	<div class="row">
+
+<!-- Headline -->
+
+		 <nav class="topnav" id="myTopnav">
+		 
+			<a class="title" href="#home">BookFinder</a>
+			  
+			<div class="potato">
+			<a class="topnavlink" href="#login">Login</a>
+			<span class="topnavicon glyphicon glyphicon-log-in"></span>	
+			</div>
+
+			<a class="borderright topnavlink" href="#signup">Sign Up</a>
+			<span class="topnavicon glyphicon glyphicon-user"></span>
+			
+			<input class="search" type="text" name="search" placeholder="Search.."> 
+			<span class="topnavicon iconpesquisa glyphicon glyphicon-search"></span>
+			
+			<a class="borderleft borderright topnavlink" href="#about">About</a>
+			<a class="borderleft topnavlink" href="#contact">Contact</a>
+			  
+		 </nav> 
+
+		<br>
+
+		<!-- <div>  -->
+
+			<!-- <h1 class="title"> Book Chooser </h1> -->
+			<!-- <br> -->
+
+		<!-- </div> -->
+
+<!-- Pagina Inicial -->
+
+		<div id="startpage" class="col-xs-10 col-xs-offset-1 col-md-4 col-md-offset-4">
+		
+			<p class="txtintro"> Welcome to the book chooser! <br> Rate books you have read and discover new ones. </p>
+			
+			<img src="imagens\home.jpg" class="imagehome">
+			
+			<br>
+			
+				<button id="buttonstart" class="start col-xs-10 col-xs-offset-1 col-md-6 col-md-offset-3">
+				
+					<span class="glyphicon glyphicon-arrow-right"></span>
+					<br>
+					<span> Get Started!!! </span>
+									
+				</button>
+			
+		</div>
+			
+<!-- main -->
+	
+		<div  id="bookcontainer">
+		
+			<div class="col-xs-10 col-xs-offset-1 col-md-4 col-md-offset-3">
+				<button id="home"  class="buttonhome"> 
+					
+					<span class="glyphicon glyphicon-home"></span>
+					<br>
+					<span> Home </span>
+
+				</button>
+	
+				<button class="buttonback  return"> 
+						
+					<span class="glyphicon glyphicon-backward"></span>
+					<br> 
+					<span> Previous book </span>
+							
+				</button>
+			</div>
+			
+			<div class="booksDiv"></div>
+			
+			<br>
+			
+			<div class="buttons col-xs-10 col-xs-offset-1 col-md-4 col-md-offset-4">
+			
+				<button class="buttonlike nextbook">
+						
+					<span class="glyphicon glyphicon-heart"></span>
+					<br>
+					<span> Like </span>
+					
+				</button>
+					
+				<button class="buttondislike pull-right nextbook">
+					
+					<span class="glyphicon glyphicon-trash"></span>
+					<br>
+					<span> Dislike </span>
+								
+				</button>
+				
+			</div>
+			
+		</div>
+
+<!-- Pagina Final -->
+			
+			<div id="endpage" class="final col-xs-10 col-xs-offset-1 col-md-4 col-md-offset-4">
+				
+				<button id="returnend" class="buttonback"> 
+				
+					<span class="glyphicon glyphicon-backward"></span>
+					<br> 
+					<span> Previous book </span>
+					
+				</button>
+			
+				<h2> End Result </h2>
+
+				
+				<div  class="txtresults">
+				
+					<p> Here are the end results of your choices!!! </p>
+					
+					<br>
+					<br>
+					
+					<p>Number of likes:
+					<p id="likecounter"></p>
+					</p>
+					
+					<p>Number of dislikes: 
+					<p id="dislikecounter"></p>
+					</p>
+				
+				</div>
+				
+				<br>
+				
+				<button id="reset" class="col-xs-10 col-xs-offset-1 col-md-6 col-md-offset-3 start"> 
+				
+					<span class="glyphicon glyphicon-home"></span>
+					<br>
+					<span> Back to Homepage </span>
+
+				</button>
+								
+			</div>
+
+		</div>
+	
+	<br>
+
+<!-- Footer -->
+
+	<div>
+
+		<p class="footer">Up Academy Diogo Marvão 2017 </p>
+
+	</div>
+
+</div>
+	
+	<script type="text/javascript" src="JS/jquery-3.2.1.js"></script>
+	<script type="text/javascript" src="JS/main.js"></script>
+</body>
+</html>

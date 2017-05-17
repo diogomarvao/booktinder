@@ -1,0 +1,355 @@
+html, body {
+	background: #E9967A;
+    background: -webkit-linear-gradient(#E9967A, #FFE4C4); 
+    background: -o-linear-gradient(#E9967A, #FFE4C4); 
+    background: -moz-linear-gradient(#E9967A, #FFE4C4); 
+    background: linear-gradient(#E9967A, #FFE4C4); 
+	
+}
+
+/* <!-- Barra de navegação --> */
+
+	/* Add a black background color to the top navigation */
+		.topnav {
+			background-color: #800000;
+			overflow: hidden;
+			border-style: solid;
+			border-color: transparent;
+			box-shadow: 5px 5px 5px #000000; 
+		}
+
+	/* Style the links inside the navigation bar */
+		.topnav a {
+			display: block;
+			text-align: center;
+			/* padding: 5px 5px; */
+		}
+
+	/* Change the color of links on hover */
+		.topnav a:hover {
+			color: #DAA520;
+		}
+
+	/* Add a color to the active/current link */
+		.topnav a.active {
+			background-color: #4CAF50;
+			color: white;
+	}
+
+	/* titulo */
+		.title{
+			float: left;
+			 font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+			 text-align:center;
+			 font-weight: bold;
+			 font-size: 30px;
+			 color:#DAA520;
+			 margin-left: 15px;
+			 text-shadow: 2px 2px 3px #000000;
+		}
+
+	/* Barra de pesquisa */
+		.input[type=text] {
+			width: 130px;
+			-webkit-transition: width 0.4s ease-in-out;
+			transition: width 0.4s ease-in-out;
+		}
+
+		.search{
+			float:right;
+			margin-top: 7px;
+		}
+
+	/* links */
+		.topnavlink{
+			float: right;
+			 font-family:  "Lucida Console", Monaco, monospace;
+			 text-align:center;
+			 font-weight: bold;
+			 color: white;
+			 color: white;
+			 font-size: 15px;
+			 padding: 10px 10px 0px 10px;
+			 text-shadow: 2px 2px 3px #000000;
+		}
+		
+	/* icons */
+		.topnavicon{
+			float:right;
+			font-size: 15px;
+			margin-top: 11px;
+			color: white;
+			text-shadow: 2px 2px 3px #000000;
+			padding: 0px 0px 0px 10px;
+		}
+
+		.iconpesquisa{
+			padding: 0px 5px 0px 10px;
+		}
+		
+	/* separadores */
+		.borderright{
+			border-right: 1px solid white;
+			text-shadow: 2px 2px 3px #000000;
+			padding: 10px 10px 10px 10px;
+		}
+
+		.borderleft{
+			border-left: 1px solid white;
+			text-shadow: 2px 2px 3px #000000;
+			padding: 10px 10px 10px 10px;
+		}
+
+/* <!-- corpo --> */
+	h2{
+		text-align: center;
+		background-color:#A52A2A;
+		font-family: "Trebuchet MS", Helvetica, sans-serif; 
+		font-size: 20px;
+		font-weight: bolder;
+		color: white;
+		border-style: solid;
+		border-color: #B8860B; 
+		line-height:125%;
+		padding: 2% 2% 2% 2%;
+		box-shadow: 5px 5px 5px #000000;
+		border-radius: 50px;
+		}
+
+	/* classes display */	
+		.book{
+			display:none; 
+			}
+			
+		.book.active{
+			display:block;
+		}
+
+		#bookcontainer{
+			display: none;
+		}
+
+		#endpage{
+			display:none;
+		}
+
+/* <!-- Primeira pagina --> */
+
+	/* imagem da 1ª pagina */
+		.imagehome{
+			max-height: 600px; 
+			max-width: 400px;
+			margin: auto;
+			display: block;
+			transition: all 0.5s ease;
+			border-style: solid;
+			border-color: #B8860B;
+			border-radius: 10px;
+			box-shadow: 2px 2px 2px #000000;
+		}
+
+/* <!-- Paginas do tinder --> */
+
+	/* capas de livros */
+		img{
+			max-height: 330px; 
+			max-width: 200px;
+			margin: auto;
+			display: block;
+			transition: all 0.5s ease;
+		}
+
+		.imgmain{
+
+		}
+
+		.imgbooks{
+			height: 250px; 
+			width: 160px;
+		}
+
+		.borderbooks{
+			border-style: solid;
+			border-color: #B8860B;
+			border-radius: 10px;
+			box-shadow: 2px 2px 2px #000000;	
+		}
+		
+	/* Autor */
+
+		h3{
+		text-align: center;
+		background-color:#DEB887;
+		font-family: "Lucida Console", Monaco, monospace; 
+		font-size: 15px;
+		font-weight: bolder;
+		color: white;
+		border-style: solid;
+		border-color: transparent; 
+		line-height:125%;
+		padding: 1% 1% 1% 1%;
+		box-shadow: 2px 2px 2px #000000;
+		border-radius: 15px;
+		}
+
+	/* Texto */
+		.txtintro{
+			background-color:#FAFAD2;
+			border-style: solid;
+			border-color: #CD5C5C;
+			font-family: "Lucida Console", Monaco, monospace;
+			font-size: 15px;
+			line-height:125%;
+			text-align: center;
+			padding: 15px 15px 15px 15px;
+			border-radius: 10px;
+			box-shadow: 2px 2px 2px #000000;
+			}
+		
+		.txt{
+			background-color:#FAFAD2;
+			border-style: solid;
+			border-color: #CD5C5C;
+			font-family: "Lucida Console", Monaco, monospace;
+			font-size: 15px;
+			line-height:125%;
+			text-align: justify;
+			padding: 15px 15px 15px 15px;
+			border-radius: 10px;
+			box-shadow: 2px 2px 2px #000000;
+			height: 125px;
+			}
+
+		.txtresults{
+			background-color:#FAFAD2;
+			border-style: solid;
+			border-color: #CD5C5C;
+			font-family: "Lucida Console", Monaco, monospace;
+			font-size: 15px;
+			line-height:125%;
+			text-align: center;
+			padding: 15px 15px 15px 15px;
+			border-radius: 10px;
+			box-shadow: 2px 2px 2px #000000;
+			}	
+
+	/* Butoes */
+		.start{
+			border:none;
+			background-color: transparent;
+			font-size:15px;
+			font-weight: bold;
+			text-align: center;
+			color: #8B0000;
+			}
+		
+		.start:hover {
+			color: black;
+		}
+
+		.buttonhome{
+			border:none;
+			background-color: transparent;
+			font-size:15px;
+			font-weight: bold;
+			text-align: center;
+			color: white;
+			}
+		
+		.buttonhome:hover {
+			color: black;
+		}
+
+		.buttonback{
+			border:none;
+			background-color: transparent;
+			font-size:15px;
+			font-weight: bold;
+			text-align: center;
+			color: white;
+			}
+		
+		.buttonback:hover {
+			color: black;
+		}
+
+		.buttonlike{
+			border:none;
+			background-color: transparent;
+			font-size:15px;
+			font-weight: bold;
+			text-align: center;
+			color:#8B0000;
+			}
+		
+		.buttonlike:hover {
+			color:black;
+		}
+
+		.buttondislike{
+			border:none;
+			background-color: transparent;
+			font-size:15px;
+			font-weight: bold;
+			text-align: center;
+			color: #8B0000;
+			}
+		
+		.buttondislike:hover {
+			color: black;
+		}
+
+	/* Links */
+		.linkstxtright{
+			font-family: "Verdana", Geneva, sans-serif;
+			font-size: 15px;
+			font-weight: bold;
+			color: #8B0000;
+			}
+
+		.linkstxtleft{
+			font-family:"Verdana", Geneva, sans-serif;
+			font-size: 15px;
+			font-weight: bold;
+			color: #8B0000;
+			}
+
+		.preview{
+
+		}
+
+		.buy{
+
+		}
+
+		.icon1{
+			margin-top:0;
+		}
+
+		.icon2{
+			margin-top:0;
+		}
+
+		.icon3{
+			margin-top:0;
+		}
+
+		.icon4{
+			margin-top:0;
+		}
+		
+/* <!-- Footer --> */
+	.footer{
+		position:absolute;
+		width:100%;
+		bottom: 0;
+		border-style: solid;
+		border-color: transparent;
+		box-shadow: 5px 5px 5px #000000;
+		background-color: #800000; 
+		text-align: center;
+		font-family: "Verdana", Geneva, sans-serif;
+		font-size: 10px;
+		color: white; 
+	}
+
