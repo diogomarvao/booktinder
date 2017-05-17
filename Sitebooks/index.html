@@ -3,7 +3,7 @@
 <head>
 	<title> Book Chooser </title>
 	
-		<!-- <meta charset="utf-8"> -->
+		<meta charset="utf-8">
 		<link rel="stylesheet" type="text/css" href="CSS/bootstrap.css">
 		<link rel="stylesheet" type="text/css" href="CSS/style.css">
 		<link href="../fonts/orc-horde.horde-bb.ttf" rel="stylesheet">
@@ -21,7 +21,7 @@
 		 
 			<a class="title" href="#home">BookFinder</a>
 			  
-			<div class="potato">
+			<div>
 			<a class="topnavlink" href="#login">Login</a>
 			<span class="topnavicon glyphicon glyphicon-log-in"></span>	
 			</div>
@@ -92,9 +92,9 @@
 			
 			<br>
 			
-			<div class="buttons col-xs-10 col-xs-offset-1 col-md-4 col-md-offset-4">
+			<div class="buttons col-xs-10 col-xs-offset-2 col-md-4 col-md-offset-5">
 			
-				<button class="buttonlike nextbook">
+				<button class="buttonlike col-md-2 nextbook">
 						
 					<span class="glyphicon glyphicon-heart"></span>
 					<br>
@@ -102,7 +102,7 @@
 					
 				</button>
 					
-				<button class="buttondislike pull-right nextbook">
+				<button class="buttondislike col-xs-offset-1 col-md-2 col-md-offset-2  nextbook">
 					
 					<span class="glyphicon glyphicon-trash"></span>
 					<br>
@@ -137,11 +137,11 @@
 					<br>
 					
 					<p>Number of likes:
-					<p id="likecounter"></p>
+					<p id="likecounter"> 0 </p>
 					</p>
 					
 					<p>Number of dislikes: 
-					<p id="dislikecounter"></p>
+					<p id="dislikecounter"> 0 </p>
 					</p>
 				
 				</div>

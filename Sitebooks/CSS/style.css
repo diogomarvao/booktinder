@@ -112,8 +112,10 @@ html, body {
 		border-color: #B8860B; 
 		line-height:125%;
 		padding: 2% 2% 2% 2%;
-		box-shadow: 5px 5px 5px #000000;
+		box-shadow: 2px 2px 2px #000000;
 		border-radius: 50px;
+		margin-top: 2%;
+		margin-bottom: 1%;
 		}
 
 	/* classes display */	
@@ -155,6 +157,7 @@ html, body {
 			max-height: 330px; 
 			max-width: 200px;
 			margin: auto;
+			margin-top: 0%;
 			display: block;
 			transition: all 0.5s ease;
 		}
@@ -178,12 +181,14 @@ html, body {
 	/* Autor */
 
 		h3{
+		margin-top: 0%;
+		margin-bottom: 1%;
 		text-align: center;
 		background-color:#DEB887;
 		font-family: "Lucida Console", Monaco, monospace; 
 		font-size: 15px;
 		font-weight: bolder;
-		color: white;
+		color: black;
 		border-style: solid;
 		border-color: transparent; 
 		line-height:125%;
@@ -192,18 +197,21 @@ html, body {
 		border-radius: 15px;
 		}
 
-	/*Price*/
+	/*Price publisher date*/
 		h4{
+		max-height: 40px;
+		margin-top: 1%;
+		margin-bottom: 5%;
 		text-align: center;
 		background-color:#DEB887;
-		font-family: "Lucida Console", Monaco, monospace; 
+		font-family: "Verdana", Geneva, sans-serif;
 		font-size: 12px;
 		font-weight: bolder;
-		color: white;
+		color: black;
 		border-style: solid;
 		border-color: transparent; 
 		line-height:125%;
-		padding: 1% 1% 1% 1%;
+		 padding: 0% 1% 0% 0%; 
 		box-shadow: 2px 2px 2px #000000;
 		border-radius: 15px;
 		}
@@ -224,6 +232,8 @@ html, body {
 			}
 		
 		.txt{
+			margin-top: 1%;
+			margin-bottom: 1%;
 			background-color:#FAFAD2;
 			border-style: solid;
 			border-color: #CD5C5C;
@@ -258,6 +268,7 @@ html, body {
 			font-weight: bold;
 			text-align: center;
 			color: #8B0000;
+			margin-top: 0%;
 			}
 		
 		.start:hover {
@@ -271,6 +282,7 @@ html, body {
 			font-weight: bold;
 			text-align: center;
 			color: white;
+			margin-bottom: 0%;
 			}
 		
 		.buttonhome:hover {
@@ -284,6 +296,7 @@ html, body {
 			font-weight: bold;
 			text-align: center;
 			color: white;
+			margin-bottom: 0%;
 			}
 		
 		.buttonback:hover {
@@ -318,25 +331,46 @@ html, body {
 
 	/* Links */
 		.linkstxtright{
-			font-family: "Verdana", Geneva, sans-serif;
-			font-size: 15px;
+			background-color: black;
+			border-style: solid;
+			border-radius: 10px;
+			border-color: black;
+			width: 110px;
+			font-family: "Lucida Console", Monaco, monospace; 
+			font-size: 12px;
+			text-align: center;
+			color: #DAA520; 
 			font-weight: bold;
-			color: #8B0000;
+			margin-bottom: 1%;
 			}
 
 		.linkstxtleft{
-			font-family:"Verdana", Geneva, sans-serif;
-			font-size: 15px;
+			background-color: black;
+			border-style: solid;
+			border-radius: 10px;
+			border-color: black;
+			width: 115px;
+			font-family: "Lucida Console", Monaco, monospace; 
+			font-size: 12px;
+			text-align: center;
+			color: #DAA520; 
 			font-weight: bold;
-			color: #8B0000;
+			margin-bottom: 1%;
 			}
 
 		.preview{
-
+			font-family: "Lucida Console", Monaco, monospace; 
+			font-size: 12px;
+			font-weight: bold;
+			color:red;
 		}
 
 		.buy{
-
+			font-family: "Lucida Console", Monaco, monospace; 
+			font-size: 12px;
+			font-weight: bold;
+			color:red;
+			margin-bottom: 0%;
 		}
 
 		.icon1{
@@ -357,7 +391,7 @@ html, body {
 		
 /* <!-- Footer --> */
 	.footer{
-		position:absolute;
+		/* position:absolute; */
 		width:100%;
 		bottom: 0;
 		border-style: solid;
@@ -365,7 +399,7 @@ html, body {
 		box-shadow: 5px 5px 5px #000000;
 		background-color: #800000; 
 		text-align: center;
-		font-family: "Verdana", Geneva, sans-serif;
+		font-family: "Lucida Console", Monaco, monospace; 
 		font-size: 10px;
 		color: white; 
 	}

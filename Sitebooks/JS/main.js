@@ -8,27 +8,33 @@ function LoadDataWithHTML(book){
 	var HTMLtoInsert =`
 	
 	<div class="book col-xs-10 col-xs-offset-1  col-md-6  col-md-offset-3">
-
-			<br>
-			<br>
 			
 		<img src="" class="imgmain borderbooks imgbooks">
 		
 		<h2 class="livros"></h2>
 
-		<h3 class="authors"></h3>
+		<h3 class="col-xs-10 col-xs-offset-1  col-md-10  col-md-offset-1 authors"></h3>
+		
+		<br>
+		<br>
 		
 		<p class="livros txt"></p>
 
 		<div class="row">
 
-			<div class="col-xs-10 col-xs-offset-1  col-md-6  col-md-offset-3">
+			<div class="col-xs-12 col-md-3">
+			
+				<h4 class="pubdate"></h4>
+
+			</div>
+			
+			<div class="col-xs-12 col-md-6">
 
 				<h4 class="publisher"></h4>
 
 			</div>
 
-			<div class="col-xs-10 col-xs-offset-1  col-md-3  col-md-offset-9">
+			<div class="col-xs-12 col-md-3">
 			
 				<h4 class="price"></h4>
 
@@ -37,16 +43,16 @@ function LoadDataWithHTML(book){
 		</div>
 					
 		<div class="clearfix">
-			<span class="pull-left linkstxtleft"> Preview </span>
-			<span class="pull-right linkstxtright"> Buy it </span>
+			<span class="pull-left linkstxtleft"> Preview: </span>
+			<span class="pull-right linkstxtright"> Buy it: </span>
 		</div>
 
 		<div class="clearfix">
 			<img src="imagens/icon/googlebooks.png" style="width: 20px; height: 20px" class="icon1 pull-left">
-			<a href="" class="preview pull-left" style="color:red"> Google Books </a>
+			<a href="" class="preview pull-left"> Google Books</a>
 			
 			<img src="imagens/icon/googleplay.png" style="width: 20px; height: 20px" class="icon2 pull-right">	
-			<a href="" class="buy pull-right" style="margin-bottom:15px; color:red"> Google Play </a>
+			<a href="" class="buy pull-right">Google Play </a>
 		</div>	
 			
 	</div>`;
@@ -57,7 +63,8 @@ function LoadDataWithHTML(book){
 	$(".imgmain", $currentbook).attr("src", book.volumeInfo.imageLinks.thumbnail);
 	$("h2", $currentbook).text(book.volumeInfo.title);
 	$(".authors", $currentbook).text("Author(s): " + book.volumeInfo.authors);
-	$(".publisher", $currentbook).text(book.volumeInfo.publisher);
+	$(".pubdate", $currentbook).text("Published in: " + book.volumeInfo.publishedDate);
+	$(".publisher", $currentbook).text("Publisher: " + book.volumeInfo.publisher);
 	// if (typeof book.saleInfo.listPrice.amount === "undefined"){$(".price", $currentbook).text("not for sale");
 	// } else {
 
@@ -165,7 +172,7 @@ $current = $(".book.active");
 	//	});
 	//});
 		
-	if($allBooks.index($current) == $allBooks.length-6){
+	if($allBooks.index($current) == $allBooks.length-9){
 		$(".return").hide();
 	}
 });
