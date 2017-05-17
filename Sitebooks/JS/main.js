@@ -17,9 +17,24 @@ function LoadDataWithHTML(book){
 		<h2 class="livros"></h2>
 
 		<h3 class="authors"></h3>
-		<h4 class="price"></h4>
 		
 		<p class="livros txt"></p>
+
+		<div class="row">
+
+			<div class="col-xs-10 col-xs-offset-1  col-md-6  col-md-offset-3">
+
+				<h4 class="publisher"></h4>
+
+			</div>
+
+			<div class="col-xs-10 col-xs-offset-1  col-md-3  col-md-offset-9">
+			
+				<h4 class="price"></h4>
+
+			</div>
+
+		</div>
 					
 		<div class="clearfix">
 			<span class="pull-left linkstxtleft"> Preview </span>
@@ -42,9 +57,10 @@ function LoadDataWithHTML(book){
 	$(".imgmain", $currentbook).attr("src", book.volumeInfo.imageLinks.thumbnail);
 	$("h2", $currentbook).text(book.volumeInfo.title);
 	$(".authors", $currentbook).text("Author(s): " + book.volumeInfo.authors);
-
+	$(".publisher", $currentbook).text(book.volumeInfo.publisher);
 	// if (typeof book.saleInfo.listPrice.amount === "undefined"){$(".price", $currentbook).text("not for sale");
 	// } else {
+
 	$(".price", $currentbook).text("Price: " + book.saleInfo.listPrice.amount + " €");
 	// }
 
