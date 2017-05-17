@@ -192,6 +192,23 @@ html, body {
 		border-radius: 15px;
 		}
 
+	/*Price*/
+		h4{
+		text-align: center;
+		background-color:#DEB887;
+		font-family: "Lucida Console", Monaco, monospace; 
+		font-size: 15px;
+		font-weight: bolder;
+		color: white;
+		border-style: solid;
+		border-color: transparent; 
+		line-height:125%;
+		padding: 1% 1% 1% 1%;
+		box-shadow: 2px 2px 2px #000000;
+		border-radius: 15px;
+		}
+
+
 	/* Texto */
 		.txtintro{
 			background-color:#FAFAD2;
