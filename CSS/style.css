@@ -1,9 +1,12 @@
 html, body {
-	background: #E9967A;
-    background: -webkit-linear-gradient(#E9967A, #FFE4C4); 
-    background: -o-linear-gradient(#E9967A, #FFE4C4); 
-    background: -moz-linear-gradient(#E9967A, #FFE4C4); 
-    background: linear-gradient(#E9967A, #FFE4C4); 
+	background-image: url("../imagens/fundo.jpg");
+	background-size: cover;
+    background-repeat: no-repeat;
+	/* background: #E9967A; */
+    /* background: -webkit-linear-gradient(#E9967A, #FFE4C4);  */
+    /* background: -o-linear-gradient(#E9967A, #FFE4C4);  */
+    /* background: -moz-linear-gradient(#E9967A, #FFE4C4);  */
+    /* background: linear-gradient(#E9967A, #FFE4C4);  */
 	
 }
 
@@ -11,6 +14,8 @@ html, body {
 
 	/* Add a black background color to the top navigation */
 		.topnav {
+			position:fixed;
+			width:100%;
 			background-color: #800000;
 			overflow: hidden;
 			border-style: solid;

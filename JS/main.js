@@ -229,9 +229,8 @@ $("#titulohome").click(function(){
 	$("#bookcontainer").hide();
 	$("#endpage").hide();
 	$("#aboutpage").hide();
+	$("#signup").hide();
 	$("#startpage").show();
-	$(".book.active").removeClass("active");
-	$(".book").eq(0).addClass("active");
 })
 
 	// contactos
@@ -242,6 +241,7 @@ $("#contactlink").click(function(){
 	$("#bookcontainer").hide();
 	$("#endpage").hide();
 	$("#aboutpage").hide();
+	$("#signup").hide();
 	$("#contactpage").show();
 })
 
@@ -253,6 +253,7 @@ $("#aboutlink").click(function(){
 	$("#bookcontainer").hide();
 	$("#endpage").hide();
 	$("#contactpage").hide();
+	$("#signup").hide();
 	$("#aboutpage").show();
 })
 
@@ -264,5 +265,6 @@ $("#signuplink").click(function(){
 	$("#bookcontainer").hide();
 	$("#endpage").hide();
 	$("#contactpage").hide();
+	$("#aboutpage").hide();
 	$("#signup").show();
 })
