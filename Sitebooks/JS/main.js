@@ -62,13 +62,13 @@ function LoadDataWithHTML(book){
 	console.log(book);
 	$(".imgmain", $currentbook).attr("src", book.volumeInfo.imageLinks.thumbnail);
 	$("h2", $currentbook).text(book.volumeInfo.title);
-	$(".authors", $currentbook).text("Author(s): " + book.volumeInfo.authors);
-	$(".pubdate", $currentbook).text("Published in: " + book.volumeInfo.publishedDate);
-	$(".publisher", $currentbook).text("Publisher: " + book.volumeInfo.publisher);
+	$(".authors", $currentbook).text("AUTHOR(S): " + book.volumeInfo.authors);
+	$(".pubdate", $currentbook).text("PUBLISHED IN: " + book.volumeInfo.publishedDate);
+	$(".publisher", $currentbook).text("PUBLISHER: " + book.volumeInfo.publisher);
 	// if (typeof book.saleInfo.listPrice.amount === "undefined"){$(".price", $currentbook).text("not for sale");
 	// } else {
 
-	$(".price", $currentbook).text("Price: " + book.saleInfo.listPrice.amount + " €");
+	$(".price", $currentbook).text("PRICE: " + book.saleInfo.listPrice.amount + " €");
 	// }
 
 	$("p" , $currentbook).text(book.volumeInfo.description);
@@ -219,4 +219,43 @@ $("#home").click(function(){
 	$(".book").eq(0).addClass("active");
 });
 
+// barra de navegacao
+
+	// titulo
+
+$("#titulohome").click(function(){
+
+	$("#contactpage").hide();
+	$("#bookcontainer").hide();
+	$("#endpage").hide();
+	$("#aboutpage").hide();
+	$("#startpage").show();
+
+	$(".book.active").removeClass("active");
+	$(".book").eq(0).addClass("active");
+})
+
+	// contactos
+
+$("#contactlink").click(function(){
+
+	$("#startpage").hide();
+	$("#bookcontainer").hide();
+	$("#endpage").hide();
+	$("#aboutpage").hide();
+	$("#contactpage").show();
+
+})
+
+	// about
+
+$("#aboutlink").click(function(){
+
+	$("#startpage").hide();
+	$("#bookcontainer").hide();
+	$("#endpage").hide();
+	$("#contactpage").hide();
+	$("#aboutpage").show();
+
+})
 

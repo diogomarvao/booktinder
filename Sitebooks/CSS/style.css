@@ -48,6 +48,24 @@ html, body {
 			 text-shadow: 2px 2px 3px #000000;
 		}
 
+	/*Contact*/
+		.contact{
+			display:none;
+		}
+
+		.contact.active{
+			display:block;
+		}
+
+	/*About*/
+		.about{
+			display:none;
+		}
+
+		.contact.active{
+			display:block;
+		}
+
 	/* Barra de pesquisa */
 		.input[type=text] {
 			width: 130px;
@@ -139,15 +157,10 @@ html, body {
 
 	/* imagem da 1ª pagina */
 		.imagehome{
-			max-height: 600px; 
-			max-width: 400px;
+			max-width: 325px;
 			margin: auto;
 			display: block;
 			transition: all 0.5s ease;
-			border-style: solid;
-			border-color: #B8860B;
-			border-radius: 10px;
-			box-shadow: 2px 2px 2px #000000;
 		}
 
 /* <!-- Paginas do tinder --> */
@@ -391,9 +404,10 @@ html, body {
 		
 /* <!-- Footer --> */
 	.footer{
-		/* position:absolute; */
+		position:fixed;
 		width:100%;
 		bottom: 0;
+		left:0;
 		border-style: solid;
 		border-color: transparent;
 		box-shadow: 5px 5px 5px #000000;

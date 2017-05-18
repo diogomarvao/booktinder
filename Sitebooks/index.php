@@ -19,7 +19,7 @@
 
 		 <nav class="topnav" id="myTopnav">
 		 
-			<a class="title" href="#home">BookFinder</a>
+			<a id="titulohome" class="title" href="#home">BookFinder</a>
 			  
 			<div>
 			<a class="topnavlink" href="#login">Login</a>
@@ -32,19 +32,12 @@
 			<input class="search" type="text" name="search" placeholder="Search.."> 
 			<span class="topnavicon iconpesquisa glyphicon glyphicon-search"></span>
 			
-			<a class="borderleft borderright topnavlink" href="#about">About</a>
-			<a class="borderleft topnavlink" href="#contact">Contact</a>
+			<a id="aboutlink" class="about borderleft borderright topnavlink">About</a>
+			<a id="contactlink" class="contact borderleft topnavlink">Contact</a>
 			  
 		 </nav> 
 
 		<br>
-
-		<!-- <div>  -->
-
-			<!-- <h1 class="title"> Book Chooser </h1> -->
-			<!-- <br> -->
-
-		<!-- </div> -->
 
 <!-- Pagina Inicial -->
 
@@ -52,7 +45,7 @@
 		
 			<p class="txtintro"> Welcome to the book chooser! <br> Rate books you have read and discover new ones. </p>
 			
-			<img src="imagens\home.jpg" class="imagehome">
+			<img src="imagens\home.jpg" class="pagination-centered imagehome">
 			
 			<br>
 			
@@ -65,7 +58,7 @@
 				</button>
 			
 		</div>
-			
+
 <!-- main -->
 	
 		<div  id="bookcontainer">
@@ -162,9 +155,123 @@
 	
 	<br>
 
+<!-- Contact -->
+	<div class="row">
+			<div id="contactpage" class="contact col-xs-10 col-xs-offset-1 col-md-4 col-md-offset-4">
+			
+				<h2> Contacts </h2>
+
+				
+				<div  class="txtresults">
+				
+					<p> Here are our contacts: </p>
+					
+					<br>
+					<br>
+					
+					<p> email:
+						<a> bookfinder@potato.com </a>
+					</p>
+					
+					<br>
+
+					<p>Twitter: 
+						<a> 0 </a>
+					</p>
+
+					<br>
+				
+					<p>Facebook:
+						<a> 0 </a>
+					</p>
+
+					<br>
+
+					<p>Instagram:
+						<a> 0 </a>
+					</p>
+
+					<br>
+
+				</div>
+	
+				<br>
+
+			</div>
+			</div>
+
+<!-- About -->
+
+			<div id="aboutpage" class="contact col-xs-10 col-xs-offset-1 col-md-4 col-md-offset-4">
+			
+				<h2> About </h2>
+
+				
+				<div  class="txtresults">
+				
+					<p>  </p>
+					
+					<br>
+					<br>
+					
+					<p> 
+						<a>  </a>
+					</p>
+					
+					<br>
+
+					<p> 
+						<a> 0 </a>
+					</p>
+
+					<br>
+				
+					<p>
+						<a> 0 </a>
+					</p>
+
+					<br>
+
+					<p>
+						<a> 0 </a>
+					</p>
+
+					<br>
+
+				</div>
+	
+				<br>
+
+			</div>
+
+<!-- Sign Up -->
+
+<div id="signup" class="col-xs-10 col-xs-offset-1 col-md-4 col-md-offset-4">
+			
+				<h2> Sign Up </h2>
+
+				
+				<div  class="txtresults">
+				
+					<form>					
+						User Name: 
+					<br>
+					<input type="text" name="username">
+					<br>
+						Email:
+					<br>
+					<input type="text" name="email">
+					<br>
+						Password:
+					<br>
+					<input type="text" name="password">
+					</form>
+				</div>
+			</div>
+
 <!-- Footer -->
 
-	<div>
+	<div class="bottomposition">
 
 		<p class="footer">Up Academy Diogo Marvão 2017 </p>
 
