@@ -230,7 +230,6 @@ $("#titulohome").click(function(){
 	$("#endpage").hide();
 	$("#aboutpage").hide();
 	$("#startpage").show();
-
 	$(".book.active").removeClass("active");
 	$(".book").eq(0).addClass("active");
 })
@@ -244,7 +243,6 @@ $("#contactlink").click(function(){
 	$("#endpage").hide();
 	$("#aboutpage").hide();
 	$("#contactpage").show();
-
 })
 
 	// about
@@ -256,6 +254,15 @@ $("#aboutlink").click(function(){
 	$("#endpage").hide();
 	$("#contactpage").hide();
 	$("#aboutpage").show();
-
 })
 
+// signup
+
+$("#signuplink").click(function(){
+
+	$("#startpage").hide();
+	$("#bookcontainer").hide();
+	$("#endpage").hide();
+	$("#contactpage").hide();
+	$("#signup").show();
+})

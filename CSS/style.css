@@ -66,6 +66,12 @@ html, body {
 			display:block;
 		}
 
+	/*signup*/
+
+		#signup{
+			display:none;
+		}
+
 	/* Barra de pesquisa */
 		.input[type=text] {
 			width: 130px;
