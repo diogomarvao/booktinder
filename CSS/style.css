@@ -10,6 +10,10 @@ html, body {
 	
 }
 
+.paddingtop{
+	padding-top: 100px;
+}
+
 /* <!-- Barra de navegação --> */
 
 	/* Add a black background color to the top navigation */
@@ -164,6 +168,14 @@ html, body {
 			display:none;
 		}
 
+		#addfav{
+			display: block;
+		}
+
+		#removefav{
+			display:none;
+		}
+
 /* <!-- Primeira pagina --> */
 
 	/* imagem da 1ª pagina */
@@ -285,7 +297,9 @@ html, body {
 			}	
 
 	/* Butoes */
+
 		.start{
+			cursor: hand;
 			border:none;
 			background-color: transparent;
 			font-size:15px;
@@ -297,6 +311,10 @@ html, body {
 		
 		.start:hover {
 			color: black;
+		}
+
+		.buttons{
+			background-color: yellow;
 		}
 
 		.buttonhome{
@@ -340,6 +358,19 @@ html, body {
 			color:black;
 		}
 
+		.buttonfavorite{
+			border:none;
+			background-color: transparent;
+			font-size:15px;
+			font-weight: bold;
+			text-align: center;
+			color:#DAA520;
+		}
+
+		.buttonfavorite:hover {
+			color:black;
+		}
+
 		.buttondislike{
 			border:none;
 			background-color: transparent;
@@ -359,7 +390,7 @@ html, body {
 			border-style: solid;
 			border-radius: 10px;
 			border-color: black;
-			width: 110px;
+			width: 70px;
 			font-family: "Lucida Console", Monaco, monospace; 
 			font-size: 12px;
 			text-align: center;
@@ -373,7 +404,7 @@ html, body {
 			border-style: solid;
 			border-radius: 10px;
 			border-color: black;
-			width: 115px;
+			width: 70px;
 			font-family: "Lucida Console", Monaco, monospace; 
 			font-size: 12px;
 			text-align: center;
@@ -429,3 +460,12 @@ html, body {
 		color: white; 
 	}
 
+#fav{
+ display: block;
+ width: 48px;
+ height: 48px;
+
+}
+
+#fav.active{
+}

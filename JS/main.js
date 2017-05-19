@@ -44,15 +44,13 @@ function LoadDataWithHTML(book){
 					
 		<div class="clearfix">
 			<span class="pull-left linkstxtleft"> Preview: </span>
-			<span class="pull-right linkstxtright"> Buy it: </span>
-		</div>
-
-		<div class="clearfix">
 			<img src="imagens/icon/googlebooks.png" style="width: 20px; height: 20px" class="icon1 pull-left">
 			<a href="" class="preview pull-left"> Google Books</a>
-			
-			<img src="imagens/icon/googleplay.png" style="width: 20px; height: 20px" class="icon2 pull-right">	
+		</div>
+		<div class="clearfix">
 			<a href="" class="buy pull-right">Google Play </a>
+			<img src="imagens/icon/googleplay.png" style="width: 20px; height: 20px" class="icon2 pull-right">	
+			<span class="pull-right linkstxtright"> Buy it: </span>	
 		</div>	
 			
 	</div>`;
@@ -127,6 +125,49 @@ $(document).ready(function() {
 		$("#dislikecounter").text(cntrdislike);
 	});
 });
+
+// favorite
+
+// var favorites = new array[];
+	
+// 	$(document).ready(function(){
+// 		var $fav = $("#fav").appendTo(document.body)
+		
+// 		})
+	
+// $('#fav').click(function(){
+//     array.push($('#favourites').val());
+// });
+
+var favorites = [];
+
+$(document).ready(function() {
+    var counter = 0;
+
+    $(".addfav").click(function() {
+        favorites.push();
+        counter++
+
+
+        $("#addfav").hide();
+		$("#removefav").show();
+   });
+});
+
+$(document).ready(function() {
+    var counter = 0;
+
+    $(".removefav").click(function() {
+        favorites.push(counter);
+        counter--
+
+
+        $("#removefav").hide();
+		$("#addfav").show();
+   });
+});
+
+
 
 // Nextbook
 
@@ -232,6 +273,18 @@ $("#titulohome").click(function(){
 	$("#signup").hide();
 	$("#startpage").show();
 })
+
+	// favorites
+
+// $("#aboutlink").click(function(){
+
+// 	$("#startpage").hide();
+// 	$("#bookcontainer").hide();
+// 	$("#endpage").hide();
+// 	$("#contactpage").hide();
+// 	$("#signup").hide();
+// 	$("#aboutpage").show();
+// })
 
 	// contactos
 
