@@ -102,7 +102,7 @@ function LoadDataWithHTML(book){
 		}
 		
 	// preço
-	if ( typeof book.saleInfo.listPrice.amount === "undefined"){
+	if ( typeof book.saleInfo.listPrice === "undefined"){
 		$(".price", $currentbook).text("PRICE: " + "N/A");
 		} else {
 			$(".price", $currentbook).text("PRICE: " + book.saleInfo.listPrice.amount + " €");
@@ -330,20 +330,22 @@ $("#titulohome").click(function(){
 	$("#endpage").hide();
 	$("#aboutpage").hide();
 	$("#signup").hide();
+	$("#favoritepage").hide();
 	$("#startpage").show();
 })
 
-	// favorites
+	// Favorites
 
-// $("#aboutlink").click(function(){
+$("#favoritelink").click(function(){
 
-// 	$("#startpage").hide();
-// 	$("#bookcontainer").hide();
-// 	$("#endpage").hide();
-// 	$("#contactpage").hide();
-// 	$("#signup").hide();
-// 	$("#aboutpage").show();
-// })
+	$("#startpage").hide();
+	$("#bookcontainer").hide();
+	$("#endpage").hide();
+	$("#contactpage").hide();
+	$("#aboutpage").hide();
+	$("#signup").hide();
+	$("#favoritepage").show();
+})
 
 	// contactos
 
@@ -354,6 +356,7 @@ $("#contactlink").click(function(){
 	$("#endpage").hide();
 	$("#aboutpage").hide();
 	$("#signup").hide();
+	$("#favoritepage").hide();
 	$("#contactpage").show();
 })
 
@@ -366,10 +369,11 @@ $("#aboutlink").click(function(){
 	$("#endpage").hide();
 	$("#contactpage").hide();
 	$("#signup").hide();
+	$("#favoritepage").hide();
 	$("#aboutpage").show();
 })
 
-// signup
+	// signup
 
 $("#signuplink").click(function(){
 
@@ -378,5 +382,18 @@ $("#signuplink").click(function(){
 	$("#endpage").hide();
 	$("#contactpage").hide();
 	$("#aboutpage").hide();
+	$("#favoritepage").hide();
 	$("#signup").show();
 })
+
+
+// sjdoiajsiodaiou
+$(document).ready(function(){
+  $('#login-trigger').click(function(){
+    $(this).next('#login-content').slideToggle();
+    $(this).toggleClass('active');          
+    
+    if ($(this).hasClass('active')) $(this).find('span').html('&#x25B2;')
+      else $(this).find('span').html('&#x25BC;')
+    })
+});
