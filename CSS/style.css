@@ -14,6 +14,10 @@ html, body {
 	padding-top: 100px;
 }
 
+.paddingbot{
+	padding-bottom: 50px;
+}
+
 /* <!-- Barra de navegação --> */
 
 	/* Add a black background color to the top navigation */
@@ -25,6 +29,7 @@ html, body {
 			border-style: solid;
 			border-color: transparent;
 			box-shadow: 5px 5px 5px #000000; 
+			z-index: 500;
 		}
 
 	/* Style the links inside the navigation bar */
@@ -36,6 +41,7 @@ html, body {
 
 	/* Change the color of links on hover */
 		.topnav a:hover {
+			cursor: hand;
 			color: #DAA520;
 		}
 
@@ -59,6 +65,7 @@ html, body {
 
 	/*Contact*/
 		.contact{
+			cursor: hand;
 			display:none;
 		}
 
@@ -68,6 +75,7 @@ html, body {
 
 	/*About*/
 		.about{
+			cursor: hand;
 			display:none;
 		}
 
@@ -78,6 +86,7 @@ html, body {
 	/*signup*/
 
 		#signup{
+			cursor: hand;
 			display:none;
 		}
 
@@ -300,13 +309,16 @@ html, body {
 
 		.start{
 			cursor: hand;
-			border:none;
-			background-color: transparent;
+			border:solid;
+			background-color: #CD853F;
+			border-color: #CD853F;
+			border-radius:100px;
 			font-size:15px;
 			font-weight: bold;
 			text-align: center;
 			color: #8B0000;
 			margin-top: 0%;
+			box-shadow: 2px 2px 2px #000000;
 			}
 		
 		.start:hover {
@@ -314,10 +326,10 @@ html, body {
 		}
 
 		.buttons{
-			background-color: yellow;
 		}
 
 		.buttonhome{
+			cursor: hand;
 			border:none;
 			background-color: transparent;
 			font-size:15px;
@@ -332,6 +344,7 @@ html, body {
 		}
 
 		.buttonback{
+			cursor: hand;
 			border:none;
 			background-color: transparent;
 			font-size:15px;
@@ -346,49 +359,79 @@ html, body {
 		}
 
 		.buttonlike{
-			border:none;
-			background-color: transparent;
+			cursor: hand;
+			border:solid;
+			background-color: #CD853F;
+			border-color: #CD853F;
+			border-radius:100px;
 			font-size:15px;
 			font-weight: bold;
 			text-align: center;
 			color:#8B0000;
+			box-shadow: 2px 2px 2px #000000;
 			}
 		
 		.buttonlike:hover {
 			color:black;
 		}
 
-		.buttonfavorite{
-			border:none;
-			background-color: transparent;
-			font-size:15px;
-			font-weight: bold;
-			text-align: center;
-			color:#DAA520;
-		}
-
-		.buttonfavorite:hover {
-			color:black;
-		}
-
 		.buttondislike{
-			border:none;
-			background-color: transparent;
+			cursor: hand;
+			border:solid;
+			background-color: #CD853F;
+			border-color: #CD853F;
+			border-radius:100px;
 			font-size:15px;
 			font-weight: bold;
 			text-align: center;
 			color: #8B0000;
+			box-shadow: 2px 2px 2px #000000;
 			}
 		
 		.buttondislike:hover {
 			color: black;
 		}
+		
+		.buttonaddfav{
+			cursor: hand;
+			border:solid;
+			background-color: #CD853F;
+			border-color: #CD853F;
+			border-radius:100px;
+			font-size:15px;
+			font-weight: bold;
+			text-align: center;
+			color:black;
+			box-shadow: 2px 2px 2px #000000;
+		}
+
+		.buttonrefav{
+			cursor: hand;
+			border:solid;
+			background-color: #CD853F;
+			border-color: #CD853F;
+			border-radius:100px;
+			font-size:15px;
+			font-weight: bold;
+			text-align: center;
+			color:#DAA520;
+			box-shadow: 2px 2px 2px #000000;
+		}
 
 	/* Links */
-		.linkstxtright{
-			background-color: black;
+		
+		.links{
+			background-color: #FAFAD2;
 			border-style: solid;
 			border-radius: 10px;
+			border-color: black;
+			width:200px;
+		}
+	
+		.linkstxtright{
+			height: 100%;
+			background-color: black;
+			border-style: solid;
 			border-color: black;
 			width: 70px;
 			font-family: "Lucida Console", Monaco, monospace; 
@@ -396,13 +439,12 @@ html, body {
 			text-align: center;
 			color: #DAA520; 
 			font-weight: bold;
-			margin-bottom: 1%;
 			}
 
 		.linkstxtleft{
+			height: 100%;
 			background-color: black;
 			border-style: solid;
-			border-radius: 10px;
 			border-color: black;
 			width: 70px;
 			font-family: "Lucida Console", Monaco, monospace; 
@@ -410,7 +452,6 @@ html, body {
 			text-align: center;
 			color: #DAA520; 
 			font-weight: bold;
-			margin-bottom: 1%;
 			}
 
 		.preview{
@@ -425,7 +466,6 @@ html, body {
 			font-size: 12px;
 			font-weight: bold;
 			color:red;
-			margin-bottom: 0%;
 		}
 
 		.icon1{

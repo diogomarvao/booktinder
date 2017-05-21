@@ -41,37 +41,93 @@ function LoadDataWithHTML(book){
 			</div>
 
 		</div>
-					
-		<div class="clearfix">
+		
+		<div class="clearfix links pull-right">
+		
 			<span class="pull-left linkstxtleft"> Preview: </span>
 			<img src="imagens/icon/googlebooks.png" style="width: 20px; height: 20px" class="icon1 pull-left">
 			<a href="" class="preview pull-left"> Google Books</a>
+			
 		</div>
-		<div class="clearfix">
-			<a href="" class="buy pull-right">Google Play </a>
-			<img src="imagens/icon/googleplay.png" style="width: 20px; height: 20px" class="icon2 pull-right">	
-			<span class="pull-right linkstxtright"> Buy it: </span>	
+		
+		<div class="clearfix links">
+		
+			<span class="pull-left linkstxtright"> Buy it: </span>	
+			<img src="imagens/icon/googleplay.png" style="width: 20px; height: 20px" class="icon2 pull-left">
+			<a href="" class="buy pull-left">Google Play </a>
+						
 		</div>	
 			
+			<br>
 	</div>`;
 
 	$(".booksDiv").append(HTMLtoInsert);
 	$currentbook = $(".book").eq(-1);
 	console.log(book);
-	$(".imgmain", $currentbook).attr("src", book.volumeInfo.imageLinks.thumbnail);
-	$("h2", $currentbook).text(book.volumeInfo.title);
-	$(".authors", $currentbook).text("AUTHOR(S): " + book.volumeInfo.authors);
-	$(".pubdate", $currentbook).text("PUBLISHED IN: " + book.volumeInfo.publishedDate);
-	$(".publisher", $currentbook).text("PUBLISHER: " + book.volumeInfo.publisher);
-	// if (typeof book.saleInfo.listPrice.amount === "undefined"){$(".price", $currentbook).text("not for sale");
-	// } else {
 
-	$(".price", $currentbook).text("PRICE: " + book.saleInfo.listPrice.amount + " €");
-	// }
+// Load dos DADOS
+	// capa do livro
+	if ( typeof book.volumeInfo.imageLinks.thumbnail === "undefined"){
+		$(".imgmain", $currentbook).text("N/A");
+		} else {
+			$(".imgmain", $currentbook).attr("src", book.volumeInfo.imageLinks.thumbnail);
+		}
+		
+	// titulo
+	if ( typeof book.volumeInfo.title === "undefined"){
+		$("h2", $currentbook).text("Title N/A");
+		} else {
+			$("h2", $currentbook).text(book.volumeInfo.title);
+		}
+		
+	// autor	
+	if ( typeof book.volumeInfo.authors === "undefined"){
+		$(".authors", $currentbook).text("AUTHOR(S): " + "N/A");
+		} else {
+			$(".authors", $currentbook).text("AUTHOR(S): " + book.volumeInfo.authors);
+		}
+		
+	// data de publicação
+	if ( typeof book.volumeInfo.publishedDate === "undefined"){
+		$(".pubdate", $currentbook).text("PUBLISHED IN: " + "N/A");
+		} else {
+			$(".pubdate", $currentbook).text("PUBLISHED IN: " + book.volumeInfo.publishedDate);
+		}
+	
+	// publisher
+	if ( typeof book.volumeInfo.publisher === "undefined"){
+		$(".publisher", $currentbook).text("PUBLISHER: " + "N/A");
+		} else {
+			$(".publisher", $currentbook).text("PUBLISHER: " + book.volumeInfo.publisher);
+		}
+		
+	// preço
+	if ( typeof book.saleInfo.listPrice.amount === "undefined"){
+		$(".price", $currentbook).text("PRICE: " + "N/A");
+		} else {
+			$(".price", $currentbook).text("PRICE: " + book.saleInfo.listPrice.amount + " €");
+		}	
+		
+	// descrição
+	if ( typeof book.volumeInfo.description === "undefined"){
+		$("p", $currentbook).text("N/A");
+		} else {
+			$("p" , $currentbook).text(book.volumeInfo.description);
+		}	
 
-	$("p" , $currentbook).text(book.volumeInfo.description);
-	$(".preview", $currentbook).attr("href", book.volumeInfo.previewLink);
-	$(".buy" , $currentbook).attr("href", book.saleInfo.buyLink);
+	// preview
+	if ( typeof book.volumeInfo.previewLink === "undefined"){
+		$(".preview", $currentbook).text("N/A");
+		} else {
+			$(".preview", $currentbook).attr("href", book.volumeInfo.previewLink);
+		}	
+		
+	// loja
+	if ( typeof book.saleInfo.buyLink === "undefined"){
+		$(".buy", $currentbook).text("N/A");
+		} else {
+			$(".buy", $currentbook).attr("href", book.saleInfo.buyLink);
+		}	
 
 	$(".book").eq(0).addClass("active");
 };
@@ -127,47 +183,47 @@ $(document).ready(function() {
 });
 
 // favorite
-
-// var favorites = new array[];
-	
-// 	$(document).ready(function(){
-// 		var $fav = $("#fav").appendTo(document.body)
-		
-// 		})
-	
-// $('#fav').click(function(){
-//     array.push($('#favourites').val());
-// });
-
-var favorites = [];
+var counter = 0;
 
 $(document).ready(function() {
-    var counter = 0;
-
+    
     $(".addfav").click(function() {
-        favorites.push();
-        counter++
-
-
+		counter++       
+        
         $("#addfav").hide();
 		$("#removefav").show();
+		return(counter);
    });
 });
 
+var counter =0;
+
 $(document).ready(function() {
-    var counter = 0;
 
     $(".removefav").click(function() {
-        favorites.push(counter);
-        counter--
-
+        counter = 0;
 
         $("#removefav").hide();
 		$("#addfav").show();
+		return(counter);
    });
 });
 
+// adicionar livro aos favoritos
 
+var favorites = [];
+var allBooks = $(".book");
+var current = $(".book.active");
+
+$(document).ready(function(){
+	$(".buttonlike").click(function(){
+	
+	if (counter == 1){
+		favorites.push($current);
+		favorites[$allBooks.index($current)].favorito = "Favorite";
+		}
+	})
+});
 
 // Nextbook
 
@@ -194,6 +250,9 @@ $("button.nextbook").click(function(){
 			$next.addClass("active");
 	//		});
 	//});		
+	
+	$("#removefav").hide();
+	$("#addfav").show();
 });
 
 // back
