@@ -216,7 +216,7 @@ html, body {
 
 		/* login */
 		
-								nav ul {
+					/*			nav ul {
 					  margin: 0;
 					  padding: 0;
 					  list-style: none;
@@ -262,29 +262,20 @@ html, body {
 					nav #login .active,
 					nav #signup a:hover {
 					  background: #fff;
-					}
+					}*/
 
 					nav #login-content {
 					  display: none;
-					  position: absolute;
-					  top: 24px;
-					  right: 0;
-					  z-index: 999;    
-					  background: #fff;
-					  background-image: linear-gradient(top, #fff, #eee);  
-					  padding: 15px;
-					  box-shadow: 0 2px 2px -1px rgba(0,0,0,.9);
-					  border-radius: 3px 0 3px 3px;
 					}
-
+/*
 					nav li #login-content {
 					  right: 0;
 					  width: 250px;  
-					}
+					}*/
 
-					/*--------------------*/
+					/*--------------------
 
-					#inputs input {
+					/*#inputs input {
 					  background: #f1f1f1;
 					  padding: 6px 5px;
 					  margin: 0 0 5px 0;
@@ -300,10 +291,10 @@ html, body {
 					  outline: none;
 					  box-shadow: 0 0 0 1px #e8c291 inset;
 					}
-
+*/
 					/*--------------------*/
 
-					#login #actions {
+					/*#login #actions {
 					  margin: 10px 0 0 0;
 					}
 
@@ -349,7 +340,7 @@ html, body {
 					  position: relative;
 					  top: 2px;
 					  right: 2px;
-					}		
+					}		*/*/
 		
 		
 /* <!-- Primeira pagina --> */

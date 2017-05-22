@@ -63,7 +63,7 @@ function LoadDataWithHTML(book){
 
 	$(".booksDiv").append(HTMLtoInsert);
 	$currentbook = $(".book").eq(-1);
-	console.log(book);
+	//console.log(book);
 
 // Load dos DADOS
 	// capa do livro
@@ -133,16 +133,19 @@ function LoadDataWithHTML(book){
 };
 
 // LoadDataWithHTML();
+var biblioteca =[];
 
 $.ajax({
 	url:"https://www.googleapis.com/books/v1/users/" + userID + "/bookshelves/" + shelfID + "/volumes?key=" + APIkey
-
-	
 }).done(function(data){
-	console.log(data);
+
+	//console.log(data);
 	$.each(data.items,function(index,item){
+		biblioteca.push(item);
 		LoadDataWithHTML(item);
 	});
+
+	
 });
 
 //Buttons
@@ -150,6 +153,9 @@ $.ajax({
 //Start
 
 $("#buttonstart").click(function(){
+
+	$allBooks = $(".book");
+	$current = $(".book.active");
 
 	$("#startpage").hide();
 	$("#bookcontainer").show();
@@ -163,72 +169,89 @@ $("#buttonstart").click(function(){
 var cntrlike = 0;
 var cntrdislike = 0;
 
-$(document).ready(function() {
-	$(".buttonlike").click(function() {
-		cntrlike++;
-		$("#likecounter").text(cntrlike);
-	});
+$(".buttonlike").click(function() {
+
+
+		$allBooks = $(".book");
+		$current = $(".book.active");
+
+		biblioteca[$allBooks.index($current)].opinion = "Like";
+
+
+	cntrlike++;
+	$("#likecounter").text(cntrlike);
 });
+
 
 // dislikes
 
 var cntrlike = 0;
 var cntrdislike = 0;
 
-$(document).ready(function() {
-	$(".buttondislike").click(function() {
-		cntrdislike++;
-		$("#dislikecounter").text(cntrdislike);
-	});
+$(".buttondislike").click(function() {
+
+		$allBooks = $(".book");
+		$current = $(".book.active");
+		biblioteca[$allBooks.index($current)].opinion = "Dislike";
+
+	cntrdislike++;
+	$("#dislikecounter").text(cntrdislike);
 });
 
-// favorite
-var counter = 0;
 
-$(document).ready(function() {
-    
-    $(".addfav").click(function() {
-		counter++       
-        
-        $("#addfav").hide();
+// favoritos
+
+	// botao add favorite
+
+	$(".addfav").click(function() {     
+	    
+	    $("#addfav").hide();
 		$("#removefav").show();
-		return(counter);
-   });
-});
+	});
 
-var counter =0;
+	// Botao remove favorite
 
-$(document).ready(function() {
+	$(document).ready(function() {
 
-    $(".removefav").click(function() {
-        counter = 0;
+	    $(".removefav").click(function() {
 
-        $("#removefav").hide();
-		$("#addfav").show();
-		return(counter);
-   });
-});
+	        $("#removefav").hide();
+			$("#addfav").show();
+	   });
+	});
 
-// adicionar livro aos favoritos
+	// adicionar livro aos favoritos
 
-var favorites = [];
-var allBooks = $(".book");
-var current = $(".book.active");
+	$allBooks = $(".book");
+	$current = $(".book.active");
 
-$(document).ready(function(){
-	$(".buttonlike").click(function(){
-	
-	if (counter == 1){
-		favorites.push($current);
-		favorites[$allBooks.index($current)].favorito = "Favorite";
-		}
-	})
-});
+	$("button.addfav").click(function(){
+
+		$allBooks = $(".book");
+		$current = $(".book.active");
+
+		biblioteca[$allBooks.index($current)].favorito = "Favorite";
+		
+	});
+
+	$("button.removefav").click(function(){
+
+		$allBooks = $(".book");
+		$current = $(".book.active");
+
+		biblioteca[$allBooks.index($current)].favorito = "Not Favorite";
+		
+	});
+
+	// adicionar favoritos à tab
+
+
+
 
 // Nextbook
 
 $("button.nextbook").click(function(){
-	
+
 	$(".return").show();
 
 	$allBooks = $(".book");
@@ -296,9 +319,7 @@ $("#reset").click(function(){
 	$("#endpage").hide();
 	$("#startpage").show();
 
-	//$(".book.active").hide();
 	$(".book.active").removeClass("active");
-	//$(".book").eq(0).show();
 	$(".book").eq(0).addClass("active");
 });
 
@@ -313,9 +334,7 @@ $("#home").click(function(){
 	$("#bookcontainer").hide();
 	$("#startpage").show();
 
-	//$(".book.active").hide();
 	$(".book.active").removeClass("active");
-	//$(".book").eq(0).show();
 	$(".book").eq(0).addClass("active");
 });
 
@@ -345,6 +364,14 @@ $("#favoritelink").click(function(){
 	$("#aboutpage").hide();
 	$("#signup").hide();
 	$("#favoritepage").show();
+	
+	$.each(biblioteca,function(index,item){
+		if ( typeof item.favorito === "favorite"){
+			$(".imgfav",item).attr("src", item.volumeInfo.imageLinks.thumbnail);;
+
+		}
+	});
+
 })
 
 	// contactos
@@ -387,7 +414,7 @@ $("#signuplink").click(function(){
 })
 
 
-// sjdoiajsiodaiou
+// login
 $(document).ready(function(){
   $('#login-trigger').click(function(){
     $(this).next('#login-content').slideToggle();
