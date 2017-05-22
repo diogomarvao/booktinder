@@ -1,3 +1,25 @@
+// SQL
+
+// var db = openDatabase('bookdb', '1.0', 'Library DB', 2 * 1024 * 1024);
+
+// db.transaction(function (tx) {
+
+    // tx.executeSql('CREATE TABLE IF NOT EXISTS books (id unique, opinion, favorito)');
+ // });
+
+ // $('#consultDb').click(function(){
+	// db.transaction(function (tx) {
+		
+		// tx.executeSql('SELECT * FROM books', [], function (tx, results) {
+	   		// $.each(results.rows,function(index,item){
+	   			
+				// console.log(item);
+			// });
+		// }, null);
+	// });
+// });
+
+
 // Ajax
 
 var APIkey = "AIzaSyCI_xHm4tRWwN2pbiATLwQ6VGLuNf5mEkE";
@@ -357,6 +379,30 @@ $("#titulohome").click(function(){
 
 $("#favoritelink").click(function(){
 
+	function LoadFavWithHTML(book){
+		var HTMLtoInsert =`
+		
+			<div class="book col-xs-10 col-xs-offset-1  col-md-6  col-md-offset-3">	
+					
+				<img src="" class="imgfav borderbooks imgbooks">
+				
+				<br>
+				
+				
+			</div>`;
+
+		$(".favDiv").append(HTMLtoInsert);
+	};
+		console.log(biblioteca);
+		
+		$.each(biblioteca,function(index,Object){
+			if ( typeof Object.favorito === "Favorite"){
+				$("h2", Object).text(book.volumeInfo.title);
+				$(".imgfav",Object).attr("src", book.volumeInfo.imageLinks.thumbnail);;
+			}
+			LoadFavWithHTML(Object);
+		});
+
 	$("#startpage").hide();
 	$("#bookcontainer").hide();
 	$("#endpage").hide();
@@ -365,14 +411,9 @@ $("#favoritelink").click(function(){
 	$("#signup").hide();
 	$("#favoritepage").show();
 	
-	$.each(biblioteca,function(index,item){
-		if ( typeof item.favorito === "favorite"){
-			$(".imgfav",item).attr("src", item.volumeInfo.imageLinks.thumbnail);;
-
-		}
-	});
-
 })
+
+
 
 	// contactos
 
