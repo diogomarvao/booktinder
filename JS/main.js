@@ -1,23 +1,23 @@
 // SQL
 
-// var db = openDatabase('bookdb', '1.0', 'Library DB', 2 * 1024 * 1024);
+var db = openDatabase('bookdb', '1.0', 'LibraryDB', 2 * 1024 * 1024);
 
-// db.transaction(function (tx) {
+db.transaction(function (tx) {
 
-    // tx.executeSql('CREATE TABLE IF NOT EXISTS books (id unique, opinion, favorito)');
- // });
+    tx.executeSql('CREATE TABLE IF NOT EXISTS books (id unique, opinion, favorito)');
+ });
 
- // $('#consultDb').click(function(){
-	// db.transaction(function (tx) {
+ $('#consultDb').click(function(){
+	db.transaction(function (tx) {
 		
-		// tx.executeSql('SELECT * FROM books', [], function (tx, results) {
-	   		// $.each(results.rows,function(index,item){
+		tx.executeSql('SELECT * FROM books', [], function (tx, results) {
+	   		$.each(results.rows,function(index,item){
 	   			
-				// console.log(item);
-			// });
-		// }, null);
-	// });
-// });
+				console.log(item);
+			});
+		}, null);
+	});
+});
 
 
 // Ajax
@@ -198,9 +198,14 @@ $(".buttonlike").click(function() {
 
 		$allBooks = $(".book");
 		$current = $(".book.active");
-
 		biblioteca[$allBooks.index($current)].opinion = "Like";
 
+		$id = $current.text();
+		$opinion = biblioteca[$allBooks.index($current)].opinion;
+
+		db.transaction(function (tx) {
+		tx.executeSql('INSERT INTO books(id, opinion) VALUES("' + $id + '","' + $opinion + '")'); 
+});
 
 	cntrlike++;
 	$("#likecounter").text(cntrlike);
@@ -218,6 +223,13 @@ $(".buttondislike").click(function() {
 		$current = $(".book.active");
 		biblioteca[$allBooks.index($current)].opinion = "Dislike";
 
+		$id = $current.text();
+		$opinion = biblioteca[$allBooks.index($current)].opinion;
+
+		db.transaction(function (tx) {
+		tx.executeSql('INSERT INTO books(id, opinion) VALUES("' + $id + '","' + $opinion + '")'); 
+});
+		
 	cntrdislike++;
 	$("#dislikecounter").text(cntrdislike);
 });
@@ -253,7 +265,6 @@ function LoadFavWithHTML(biblioteca){
 						$(".livrosfav").text("Title: " + book.volumeInfo.title);
 
 						$(".imgfav").attr("src", book.volumeInfo.imageLinks.thumbnail);
-					
 					
 					}
 				}
@@ -294,6 +305,12 @@ function LoadFavWithHTML(biblioteca){
 
 		biblioteca[$allBooks.index($current)].favorito = "Favorite";
 		
+		$id = $current.text();
+		$favorito = biblioteca[$allBooks.index($current)].favorito = "Favorite";
+
+		db.transaction(function (tx) {
+		tx.executeSql('INSERT INTO books(id, favorito) VALUES("' + $id + '","' + $favorito + '")'); 
+});
 	});
 
 	$("button.removefav").click(function(){
@@ -303,6 +320,12 @@ function LoadFavWithHTML(biblioteca){
 
 		biblioteca[$allBooks.index($current)].favorito = "Not Favorite";
 		
+		$id = $current.text();
+		$opinion = biblioteca[$allBooks.index($current)].favorito = "Not Favorite";
+
+		db.transaction(function (tx) {
+		tx.executeSql('INSERT INTO books(id, favorito) VALUES("' + $id + '","' + $favorito + '")'); 
+});
 	});
 
 // Nextbook
@@ -314,8 +337,6 @@ $("button.nextbook").click(function(){
 	$allBooks = $(".book");
 	$current = $(".book.active");
 
-	biblioteca[$allBooks.index($current)].favorito = "Not Favorite";
-	
 	var index = $allBooks.index($current);
 
 	$next = $current.next(".book");
@@ -326,12 +347,14 @@ $("button.nextbook").click(function(){
 		$("#endpage").show();
 	};
 
-	//$current.fadeOut(500,function(){
+	// $current.fadeOut(50,function(){
 		$current.removeClass("active");
-	//	$next.fadeIn(500,function(){
+		// $next.fadeIn(500,function(){
 			$next.addClass("active");
-	//		});
-	//});		
+			// });
+	// });		
+	
+	biblioteca[$allBooks.index($current)].favorito = "Not Favorite";
 	
 	$("#removefav").hide();
 	$("#addfav").show();
@@ -347,12 +370,12 @@ $current = $(".book.active");
 	var index = $allBooks.index($current);
 	$previous = $current.prev(".book");
 	
-	//$current.fadeOut(100,function(){
+	// $current.fadeOut(50,function(){
 		$current.removeClass("active");
-	//	$previous.fadeIn(100,function(){
+		// $previous.fadeIn(50,function(){
 			$previous.addClass("active");
-	//	});
-	//});
+		// });
+	// });
 		
 	if($allBooks.index($current) == $allBooks.length-9){
 		$(".return").hide();

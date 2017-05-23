@@ -257,7 +257,12 @@ html, body {
 			height: 250px; 
 			width: 160px;
 		}
-
+		.imgbooks:hover{
+		-webkit-transform: scale(1.5);
+		-moz-transform:scale(1.5);
+		transition: all 0.5s ease;
+		}
+		
 		.borderbooks{
 			border-style: solid;
 			border-color: #B8860B;
@@ -557,3 +562,112 @@ html, body {
 
 #fav.active{
 }
+
+@media screen and (max-width: 470px){
+	.title{
+		font-size: 20px;
+	}
+	
+	.topnavlink{
+		 font-size: 11px;
+	}
+		
+	.topnavicon{
+		font-size: 11px;
+	}	
+			
+	.search{
+			float: none;
+			line-height: none;
+		}
+	
+	.borderright{
+		padding: 5px 5px 5px 5px;
+	}
+
+	.borderleft{
+		padding: 5px 5px 5px 5px;
+	}
+			
+	.txtintro{
+		font-size: 11px;
+		padding: 1px 3px 0px 0px;
+	}
+	
+	/* titulo livro*/
+	h2{
+		font-size: 12px;
+	}
+	
+	.imagehome{
+			max-width: 200px;
+		}
+	
+	/* autor*/
+	h3{
+		font-size: 12px;
+	}
+
+	/* publisher preço*/	
+	h4{
+		font-size: 10px;
+	}
+	
+	.txt{
+		font-size: 11px;
+		text-align: center;
+		padding: 1px 3px 0px 0px;
+		}
+	
+		.txtresults{
+			font-size: 11px;
+			padding: 1px 3px 0px 0px;
+		}	
+}
+
+/* Butoes */
+
+		.start{
+			font-size:12px;
+			}
+
+		.buttonhome{
+			font-size:12px;
+			}
+
+		.buttonback{
+			font-size:12px;
+			}
+
+		.buttonlike{
+			font-size:11px;
+			}
+
+		.buttondislike{
+			font-size:11px;
+			}
+
+		.buttonaddfav{
+			font-size:11px;
+		}
+
+		.buttonrefav{
+			font-size:11px;
+		}
+
+/* Links */
+		.linkstxtright{
+			font-size: 10px;
+			}
+
+		.linkstxtleft{
+			font-size: 10px;
+			}
+
+		.preview{
+			font-size: 10px;
+		}
+
+		.buy{
+			font-size: 10px;
+		}
