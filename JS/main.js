@@ -161,7 +161,7 @@ $.ajax({
 	url:"https://www.googleapis.com/books/v1/users/" + userID + "/bookshelves/" + shelfID + "/volumes?key=" + APIkey
 }).done(function(data){
 
-	//console.log(data);
+	// console.log(data);
 	$.each(data.items,function(index,item){
 		biblioteca.push(item);
 		LoadDataWithHTML(item);
@@ -178,6 +178,8 @@ $("#buttonstart").click(function(){
 
 	$allBooks = $(".book");
 	$current = $(".book.active");
+
+	biblioteca[$allBooks.index($current)].favorito = "Not Favorite";
 
 	$("#startpage").hide();
 	$("#bookcontainer").show();
@@ -224,12 +226,50 @@ $(".buttondislike").click(function() {
 // favoritos
 
 	// botao add favorite
+function LoadFavWithHTML(biblioteca){
 
-	$(".addfav").click(function() {     
-	    
-	    $("#addfav").hide();
+			$.each(biblioteca,function(index,book){
+
+				if (typeof book.favorito !== "undefined"){
+
+					if (book.favorito = "Favorite"){
+
+						var HTMLtoInsert =`
+						
+							<div class="bookfav col-xs-10 col-xs-offset-1  col-md-6  col-md-offset-3">	
+									
+								<h2 class="livrosfav"></h2>
+
+								<br>
+
+								<img src="" class="imgfav borderbooks imgbooks">
+								
+								<br>
+
+							</div>`;
+
+						$(".favDiv").append(HTMLtoInsert);
+
+						$(".livrosfav").text("Title: " + book.volumeInfo.title);
+
+						$(".imgfav").attr("src", book.volumeInfo.imageLinks.thumbnail);
+					
+					
+					}
+				}
+
+			});
+			
+		}	
+
+	$("#addfav").click(function() {   
+		LoadFavWithHTML(biblioteca);
+		$("#addfav").hide();
 		$("#removefav").show();
+
 	});
+
+
 
 	// Botao remove favorite
 
@@ -265,11 +305,6 @@ $(".buttondislike").click(function() {
 		
 	});
 
-	// adicionar favoritos à tab
-
-
-
-
 // Nextbook
 
 $("button.nextbook").click(function(){
@@ -278,6 +313,8 @@ $("button.nextbook").click(function(){
 
 	$allBooks = $(".book");
 	$current = $(".book.active");
+
+	biblioteca[$allBooks.index($current)].favorito = "Not Favorite";
 	
 	var index = $allBooks.index($current);
 
@@ -379,29 +416,36 @@ $("#titulohome").click(function(){
 
 $("#favoritelink").click(function(){
 
-	function LoadFavWithHTML(book){
-		var HTMLtoInsert =`
-		
-			<div class="book col-xs-10 col-xs-offset-1  col-md-6  col-md-offset-3">	
-					
-				<img src="" class="imgfav borderbooks imgbooks">
-				
-				<br>
-				
-				
-			</div>`;
+	// function LoadFavWithHTML(book){
+	// 		var HTMLtoInsert =`
+			
+	// 			<div class="book col-xs-10 col-xs-offset-1  col-md-6  col-md-offset-3">	
+						
+	// 				<h2 class="livros"></h2>
 
-		$(".favDiv").append(HTMLtoInsert);
-	};
-		console.log(biblioteca);
-		
-		$.each(biblioteca,function(index,Object){
-			if ( typeof Object.favorito === "Favorite"){
-				$("h2", Object).text(book.volumeInfo.title);
-				$(".imgfav",Object).attr("src", book.volumeInfo.imageLinks.thumbnail);;
-			}
-			LoadFavWithHTML(Object);
-		});
+	// 				<br>
+
+	// 				<img src="" class="imgfav borderbooks imgbooks">
+					
+	// 				<br>
+
+	// 			</div>`;
+
+	// 		$(".favDiv").append(HTMLtoInsert);
+	// };
+
+	// console.log(biblioteca);
+	
+	// $.each(biblioteca,function(index,book){
+
+	// 	// if (  book.favorito === "Favorite"){
+	// 		console.log(book.volumeInfo.title);
+	// 		console.log(book.volumeInfo.imageLinks.thumbnail);
+	// 		$("h2", book).text(book.volumeInfo.title);
+	// 		$(".imgfav",book).attr("src", book.volumeInfo.imageLinks.thumbnail);;
+	// 	// }
+	// 	LoadFavWithHTML()	
+	// });	
 
 	$("#startpage").hide();
 	$("#bookcontainer").hide();
@@ -410,10 +454,9 @@ $("#favoritelink").click(function(){
 	$("#aboutpage").hide();
 	$("#signup").hide();
 	$("#favoritepage").show();
+	$(".bookfav").addClass("active");
 	
 })
-
-
 
 	// contactos
 
@@ -453,7 +496,6 @@ $("#signuplink").click(function(){
 	$("#favoritepage").hide();
 	$("#signup").show();
 })
-
 
 // login
 $(document).ready(function(){
