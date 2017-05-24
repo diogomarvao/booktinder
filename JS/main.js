@@ -4,21 +4,13 @@ var db = openDatabase('bookdb', '1.0', 'LibraryDB', 2 * 1024 * 1024);
 
 db.transaction(function (tx) {
 
-    tx.executeSql('CREATE TABLE IF NOT EXISTS books (id unique, opinion, favorito)');
+    tx.executeSql('CREATE TABLE IF NOT EXISTS books (id unique, title, opinion, favorito)');
  });
 
- $('#consultDb').click(function(){
-	db.transaction(function (tx) {
-		
-		tx.executeSql('SELECT * FROM books', [], function (tx, results) {
-	   		$.each(results.rows,function(index,item){
-	   			
-				console.log(item);
-			});
-		}, null);
-	});
-});
+// db.transaction(function (tx) {
 
+//     tx.executeSql('DROP TABLE books (id unique, title, opinion, favorito)');
+//  });
 
 // Ajax
 
@@ -30,6 +22,8 @@ function LoadDataWithHTML(book){
 	var HTMLtoInsert =`
 	
 	<div class="book col-xs-10 col-xs-offset-1  col-md-6  col-md-offset-3">
+
+		<input type="hidden" class="hiddenFieldId"></input>
 			
 		<img src="" class="imgmain borderbooks imgbooks">
 		
@@ -85,6 +79,7 @@ function LoadDataWithHTML(book){
 
 	$(".booksDiv").append(HTMLtoInsert);
 	$currentbook = $(".book").eq(-1);
+	$('.hiddenFieldId',$currentbook).text(book.id);
 	//console.log(book);
 
 // Load dos DADOS
@@ -167,6 +162,13 @@ $.ajax({
 		LoadDataWithHTML(item);
 	});
 
+	$book = $('.book.active');
+	$id = $('.hiddenFieldId',$book).text();
+	// $title = biblioteca[$allBooks.index($current)].volumeInfo.title;
+
+	db.transaction(function (tx) {
+	tx.executeSql('INSERT INTO books(id, title) VALUES("' + $id + '","' + $title + '")');
+		}); 
 	
 });
 
@@ -179,7 +181,8 @@ $("#buttonstart").click(function(){
 	$allBooks = $(".book");
 	$current = $(".book.active");
 
-	biblioteca[$allBooks.index($current)].favorito = "Not Favorite";
+	if ( typeof biblioteca[$allBooks.index($current)].favorito === "undefined"){biblioteca[$allBooks.index($current)].favorito = "Not Favorite"
+	}
 
 	$("#startpage").hide();
 	$("#bookcontainer").show();
@@ -200,7 +203,7 @@ $(".buttonlike").click(function() {
 		$current = $(".book.active");
 		biblioteca[$allBooks.index($current)].opinion = "Like";
 
-		$id = $current.text();
+		$id = $('.hiddenFieldId',$book).text();
 		$opinion = biblioteca[$allBooks.index($current)].opinion;
 
 		db.transaction(function (tx) {
@@ -223,7 +226,7 @@ $(".buttondislike").click(function() {
 		$current = $(".book.active");
 		biblioteca[$allBooks.index($current)].opinion = "Dislike";
 
-		$id = $current.text();
+		$id = $('.hiddenFieldId',$book).text();
 		$opinion = biblioteca[$allBooks.index($current)].opinion;
 
 		db.transaction(function (tx) {
@@ -238,47 +241,51 @@ $(".buttondislike").click(function() {
 // favoritos
 
 	// botao add favorite
-function LoadFavWithHTML(biblioteca){
+		function LoadFavWithHTML(biblioteca){
 
-			$.each(biblioteca,function(index,book){
+					$.each(biblioteca,function(index,book){
 
-				if (typeof book.favorito !== "undefined"){
+						if (typeof book.favorito !== "undefined"){
 
-					if (book.favorito = "Favorite"){
+							if (book.favorito == "Favorite"){
 
-						var HTMLtoInsert =`
-						
-							<div class="bookfav col-xs-10 col-xs-offset-1  col-md-6  col-md-offset-3">	
-									
-								<h2 class="livrosfav"></h2>
-
-								<br>
-
-								<img src="" class="imgfav borderbooks imgbooks">
+								var HTMLtoInsert =`
 								
-								<br>
+									<div class="bookfav col-xs-10 col-xs-offset-1  col-md-6  col-md-offset-3">	
+											
+										<h2 class="livrosfav"></h2>
 
-							</div>`;
+										<br>
 
-						$(".favDiv").append(HTMLtoInsert);
+										<img src="" class="imgfav borderbooks imgbooks">
+										
+										<br>
 
-						$(".livrosfav").text("Title: " + book.volumeInfo.title);
+									</div>`;
 
-						$(".imgfav").attr("src", book.volumeInfo.imageLinks.thumbnail);
+								$(".favDiv").append(HTMLtoInsert);
+								$currentbook = $(".bookfav").eq(-1);
+
+								$(".livrosfav", $currentbook).text("Title: " + book.volumeInfo.title);
+
+								$(".imgfav", $currentbook).attr("src", book.volumeInfo.imageLinks.thumbnail);
+							
+							}
+						}
+
+					});
 					
-					}
-				}
-
-			});
-			
 		}	
 
-	$("#addfav").click(function() {   
-		LoadFavWithHTML(biblioteca);
-		$("#addfav").hide();
-		$("#removefav").show();
+		$("#addfav").click(function() {   
+			$(".bookfav").empty();
+			LoadFavWithHTML(biblioteca);
+			// console.log(biblioteca);
+			$("#addfav").hide();
+			$("#removefav").show();
 
-	});
+
+		});
 
 
 
@@ -305,12 +312,12 @@ function LoadFavWithHTML(biblioteca){
 
 		biblioteca[$allBooks.index($current)].favorito = "Favorite";
 		
-		$id = $current.text();
-		$favorito = biblioteca[$allBooks.index($current)].favorito = "Favorite";
+		// $id = $current.text();
+		// $favorito = biblioteca[$allBooks.index($current)].favorito = "Favorite";
 
-		db.transaction(function (tx) {
-		tx.executeSql('INSERT INTO books(id, favorito) VALUES("' + $id + '","' + $favorito + '")'); 
-});
+		// db.transaction(function (tx) {
+		// tx.executeSql('INSERT INTO books(id, favorito) VALUES("' + $id + '","' + $favorito + '")'); 
+// });
 	});
 
 	$("button.removefav").click(function(){
@@ -320,12 +327,13 @@ function LoadFavWithHTML(biblioteca){
 
 		biblioteca[$allBooks.index($current)].favorito = "Not Favorite";
 		
-		$id = $current.text();
+		$id = $('.hiddenFieldId',$book).text();
 		$opinion = biblioteca[$allBooks.index($current)].favorito = "Not Favorite";
 
 		db.transaction(function (tx) {
 		tx.executeSql('INSERT INTO books(id, favorito) VALUES("' + $id + '","' + $favorito + '")'); 
 });
+
 	});
 
 // Nextbook
@@ -354,7 +362,8 @@ $("button.nextbook").click(function(){
 			// });
 	// });		
 	
-	biblioteca[$allBooks.index($current)].favorito = "Not Favorite";
+	if ( typeof biblioteca[$allBooks.index($current)].favorito === "undefined") {biblioteca[$allBooks.index($current)].favorito = "Not Favorite"
+	}
 	
 	$("#removefav").hide();
 	$("#addfav").show();
@@ -529,4 +538,19 @@ $(document).ready(function(){
     if ($(this).hasClass('active')) $(this).find('span').html('&#x25B2;')
       else $(this).find('span').html('&#x25BC;')
     })
+});
+
+
+// Database
+
+ $('#consultDb').click(function(){
+	db.transaction(function (tx) {
+		
+		tx.executeSql('SELECT * FROM books', [], function (tx, results) {
+	   		$.each(results.rows,function(index,item){
+	   			
+				console.log(item);
+			});
+		}, null);
+	});
 });
