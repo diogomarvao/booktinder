@@ -143,6 +143,32 @@ html, body {
 			padding: 10px 10px 10px 10px;
 		}
 
+	/* Login */
+	
+		.loginfield{
+			position:fixed;
+			background-color: #800000;
+			overflow: hidden;
+			border-style: solid;
+			border-color: transparent;
+			box-shadow: 5px 5px 5px #000000; 
+			z-index: 499;
+			border-radius: 10px;
+			padding: 0px 5px 10px 10px;
+			right:0;
+		}
+		
+		.keepcbox{
+			color:white;
+			margin-top: 5px;
+			margin-right: 10px;
+			font-size: 12px;
+		}
+		
+		.loginbtn{
+			margin-top:5px;
+		}
+		
 /* <!-- corpo --> */
 	h2{
 		text-align: center;
@@ -223,7 +249,7 @@ html, body {
 
 	/* login */
 	
-		nav #login-content {
+		#login-content {
 			display: none;
 		}		
 		
@@ -478,7 +504,8 @@ html, body {
 			border-style: solid;
 			border-radius: 10px;
 			border-color: black;
-			width:200px;
+			width: 200px;
+			margin-bottom: 2%;
 		}
 	
 		.linkstxtright{
@@ -512,6 +539,7 @@ html, body {
 			font-size: 12px;
 			font-weight: bold;
 			color:red;
+			padding: 3px;
 		}
 
 		.buy{
@@ -519,6 +547,7 @@ html, body {
 			font-size: 12px;
 			font-weight: bold;
 			color:red;
+			padding: 3px;
 		}
 
 		.icon1{

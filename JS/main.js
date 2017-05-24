@@ -1,16 +1,39 @@
 // SQL
 
-var db = openDatabase('bookdb', '1.0', 'LibraryDB', 2 * 1024 * 1024);
+// Database dos livros
 
-db.transaction(function (tx) {
+		var db = openDatabase('bookdb', '1.0', 'LibraryDB', 2 * 1024 * 1024);
 
-    tx.executeSql('CREATE TABLE IF NOT EXISTS books (id unique, title, opinion, favorito)');
- });
+		db.transaction(function (tx) {
+
+			tx.executeSql('CREATE TABLE IF NOT EXISTS books (id unique, title, opinion, favorito)');
+		 });
 
 // db.transaction(function (tx) {
 
 //     tx.executeSql('DROP TABLE books (id unique, title, opinion, favorito)');
 //  });
+
+// database de users
+
+		var db = openDatabase('userdb', '1.0', 'userloginDB', 2 * 1024 * 1024);
+
+		db.transaction(function (tx) {
+
+			tx.executeSql('CREATE TABLE IF NOT EXISTS userdata (id unique, name, email, password)');
+		 });
+
+		 $('#consultuserDb').click(function(){
+			db.transaction(function (tx) {
+				
+				tx.executeSql('SELECT * FROM userdata', [], function (tx, results) {
+					$.each(results.rows,function(index,item){
+						
+						console.log(item);
+					});
+				}, null);
+			});
+		});
 
 // Ajax
 
@@ -66,7 +89,7 @@ function LoadDataWithHTML(book){
 			
 		</div>
 		
-		<div class="clearfix links">
+		<div class="clearfix links pull-left">
 		
 			<span class="pull-left linkstxtright"> Buy it: </span>	
 			<img src="imagens/icon/googleplay.png" style="width: 20px; height: 20px" class="icon2 pull-left">
@@ -185,6 +208,11 @@ $("#buttonstart").click(function(){
 	}
 
 	$("#startpage").hide();
+	$(document).ready(function(){
+		$('#login-content').hide();
+		document.getElementById("login-trigger").style.color = "white";
+		document.getElementById("loginicon").style.color = "white";
+	});
 	$("#bookcontainer").show();
 	
 	$(".return").hide();
@@ -352,6 +380,11 @@ $("button.nextbook").click(function(){
 	if( $allBooks.index($current) == $allBooks.length-1 ){
 		$next = $allBooks.eq(-1);
 		$("#bookcontainer").hide();
+		$(document).ready(function(){
+			$('#login-content').hide();
+			document.getElementById("login-trigger").style.color = "white";
+			document.getElementById("loginicon").style.color = "white";
+		});
 		$("#endpage").show();
 	};
 
@@ -366,6 +399,11 @@ $("button.nextbook").click(function(){
 	}
 	
 	$("#removefav").hide();
+	$(document).ready(function(){
+		$('#login-content').hide();
+		document.getElementById("login-trigger").style.color = "white";
+		document.getElementById("loginicon").style.color = "white";
+	});
 	$("#addfav").show();
 });
 
@@ -396,6 +434,11 @@ $current = $(".book.active");
 	$("#returnend").click(function(){
 		$allBooks=$(".book");
 		$("#endpage").hide();
+		$(document).ready(function(){
+			$('#login-content').hide();
+			document.getElementById("login-trigger").style.color = "white";
+			document.getElementById("loginicon").style.color = "white";
+		});
 		$("#bookcontainer").show();
 	});
 
@@ -408,6 +451,11 @@ $("#reset").click(function(){
 	$("#dislikecounter").text(cntrdislike);
 	
 	$("#endpage").hide();
+	$(document).ready(function(){
+		$('#login-content').hide();
+		document.getElementById("login-trigger").style.color = "white";
+		document.getElementById("loginicon").style.color = "white";
+	});
 	$("#startpage").show();
 
 	$(".book.active").removeClass("active");
@@ -423,6 +471,11 @@ $("#home").click(function(){
 	$("#dislikecounter").text(cntrdislike);
 			
 	$("#bookcontainer").hide();
+	$(document).ready(function(){
+		$('#login-content').hide();
+		document.getElementById("login-trigger").style.color = "white";
+		document.getElementById("loginicon").style.color = "white";
+	});
 	$("#startpage").show();
 
 	$(".book.active").removeClass("active");
@@ -441,6 +494,11 @@ $("#titulohome").click(function(){
 	$("#aboutpage").hide();
 	$("#signup").hide();
 	$("#favoritepage").hide();
+	$(document).ready(function(){
+		$('#login-content').hide();
+		document.getElementById("login-trigger").style.color = "white";
+		document.getElementById("loginicon").style.color = "white";
+	});
 	$("#startpage").show();
 })
 
@@ -486,6 +544,11 @@ $("#favoritelink").click(function(){
 	$("#aboutpage").hide();
 	$("#signup").hide();
 	$("#favoritepage").show();
+	$(document).ready(function(){
+		$('#login-content').hide();
+		document.getElementById("login-trigger").style.color = "white";
+		document.getElementById("loginicon").style.color = "white";
+	});
 	$(".bookfav").addClass("active");
 	
 })
@@ -500,6 +563,11 @@ $("#contactlink").click(function(){
 	$("#aboutpage").hide();
 	$("#signup").hide();
 	$("#favoritepage").hide();
+	$(document).ready(function(){
+		$('#login-content').hide();
+		document.getElementById("login-trigger").style.color = "white";
+		document.getElementById("loginicon").style.color = "white";
+	});
 	$("#contactpage").show();
 })
 
@@ -513,6 +581,11 @@ $("#aboutlink").click(function(){
 	$("#contactpage").hide();
 	$("#signup").hide();
 	$("#favoritepage").hide();
+	$(document).ready(function(){
+		$('#login-content').hide();
+		document.getElementById("login-trigger").style.color = "white";
+		document.getElementById("loginicon").style.color = "white";
+	});
 	$("#aboutpage").show();
 })
 
@@ -526,19 +599,32 @@ $("#signuplink").click(function(){
 	$("#contactpage").hide();
 	$("#aboutpage").hide();
 	$("#favoritepage").hide();
+	$(document).ready(function(){
+		$('#login-content').hide();
+		document.getElementById("login-trigger").style.color = "white";
+		document.getElementById("loginicon").style.color = "white";
+	});
 	$("#signup").show();
 })
 
 // login
 $(document).ready(function(){
   $('#login-trigger').click(function(){
-    $(this).next('#login-content').slideToggle();
-    $(this).toggleClass('active');          
     
-    if ($(this).hasClass('active')) $(this).find('span').html('&#x25B2;')
-      else $(this).find('span').html('&#x25BC;')
-    })
+		if($('#login-content').is(':visible')) { 
+			$('#login-content').hide();
+			document.getElementById("login-trigger").style.color = "white";
+			document.getElementById("loginicon").style.color = "white";
+		} else{ 
+			$('#login-content').show();
+			document.getElementById("login-trigger").style.color = "#DAA520";
+			document.getElementById("loginicon").style.color = "#DAA520";
+		}
+		
+	});
+	
 });
+
 
 
 // Database
