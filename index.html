@@ -48,7 +48,6 @@
 			<a id="aboutlink" class="about borderleft borderright topnavlink">About Us</a>
 			<a id="contactlink" class="contact borderleft topnavlink">Contacts</a>
 			<a id="favoritelink" class="favorites borderleft topnavlink">Favorites</a>
-			<button id="consultDb"> database </button>
 		<!-- 	<button id="consultuserDb"> userdatabase </button> -->
 			  
 		 </nav> 
@@ -92,87 +91,191 @@
 			
 			<br>
 			
-				<button id="buttonstart" class="start col-xs-10 col-xs-offset-1 col-md-6 col-md-offset-3">
+				<!-- <button id="buttonstart" class="start col-xs-10 col-xs-offset-1 col-md-6 col-md-offset-3"> -->
+				
+					<!-- <span class="glyphicon glyphicon-arrow-right"></span> -->
+					<!-- <br> -->
+					<!-- <span> Site Recommended Books </span> -->
+									
+				<!-- </button> -->
+			
+				<button id="buttonstartsearch" class="startsearch col-xs-10 col-xs-offset-1 col-md-6 col-md-offset-3">
 				
 					<span class="glyphicon glyphicon-arrow-right"></span>
 					<br>
-					<span> Get Started!!! </span>
+					<span> Start your Search!!! </span>
 									
 				</button>
-			
 		</div>
 
-<!-- main -->
+<!-- main recomendados -->
 	
-		<div  id="bookcontainer">
+		<!-- <div  id="bookcontainer"> -->
 		
-			<div class="paddingtop col-xs-10 col-xs-offset-1 col-md-4 col-md-offset-3">
-				<button id="home"  class="buttonhome"> 
+			<!-- <div class="paddingtop col-xs-10 col-xs-offset-1 col-md-4 col-md-offset-3"> -->
+				<!-- <button id="home"  class="buttonhome">  -->
 					
-					<span class="glyphicon glyphicon-repeat"></span>
-					<br>
-					<span> Reset </span>
+					<!-- <span class="glyphicon glyphicon-repeat"></span> -->
+					<!-- <br> -->
+					<!-- <span> Reset </span> -->
 
-				</button>
+				<!-- </button> -->
 	
-				<button class="buttonback  return"> 
+				<!-- <button class="buttonback  return">  -->
 						
-					<span class="glyphicon glyphicon-backward"></span>
-					<br> 
-					<span> Previous book </span>
+					<!-- <span class="glyphicon glyphicon-backward"></span> -->
+					<!-- <br>  -->
+					<!-- <span> Previous book </span> -->
 							
-				</button>
-			</div>
+				<!-- </button> -->
+			<!-- </div> -->
 			
-			<div class="booksDiv"></div>
+			<!-- <div class="booksDiv"></div> -->
 			
-			<br>
+			<!-- <br> -->
 		
 			
-			<div class="buttons clearfix col-xs-12 col-md-8 col-md-offset-2">
+			<!-- <div class="buttons clearfix col-xs-12 col-md-8 col-md-offset-2"> -->
 			
 			<!-- Butao like -->
 
-				<button class="buttonlike  col-xs-2 col-xs-offset-1 col-md-offset-2 nextbook">
+				<!-- <button class="buttonlike  col-xs-2 col-xs-offset-1 col-md-offset-2 nextbook"> -->
 						
-					<span class="glyphicon glyphicon-heart"></span>
-					<br>
-					<span> Like </span>
+					<!-- <span class="glyphicon glyphicon-heart"></span> -->
+					<!-- <br> -->
+					<!-- <span> Like </span> -->
 					
-				</button>
+				<!-- </button> -->
 
 			<!-- Butao favorites -->
 
-				<button id="addfav" class="addfav buttonaddfav col-xs-2 col-xs-offset-1 col-md-offset-1">
+				<!-- <button id="addfav" class="addfav buttonaddfav col-xs-2 col-xs-offset-1 col-md-offset-1"> -->
 
-					<span class="glyphicon glyphicon-star"></span>
-					<br>
-					<span> Favorite </span>
+					<!-- <span class="glyphicon glyphicon-star"></span> -->
+					<!-- <br> -->
+					<!-- <span> Favorite </span> -->
 
-				</button>
+				<!-- </button> -->
 
-				<button id="removefav" class="removefav buttonrefav col-xs-2 col-xs-offset-1 col-md-offset-1">
+				<!-- <button id="removefav" class="removefav buttonrefav col-xs-2 col-xs-offset-1 col-md-offset-1"> -->
 
-					<span class="glyphicon glyphicon-star"></span>
-					<br>
-					<span> Favorite </span>
+					<!-- <span class="glyphicon glyphicon-star"></span> -->
+					<!-- <br> -->
+					<!-- <span> Favorite </span> -->
 
-				</button>
+				<!-- </button> -->
 
 			<!-- Butao dislike -->
 					
-				<button class="buttondislike col-xs-2 col-xs-offset-1 col-md-offset-1 nextbook">
+				<!-- <button class="buttondislike col-xs-2 col-xs-offset-1 col-md-offset-1 nextbook"> -->
 					
-					<span class="glyphicon glyphicon-trash"></span>
-					<br>
-					<span> Dislike </span>
+					<!-- <span class="glyphicon glyphicon-trash"></span> -->
+					<!-- <br> -->
+					<!-- <span> Dislike </span> -->
 								
-				</button>
+				<!-- </button> -->
 				
+			<!-- </div> -->
+			
+		<!-- </div> -->
+
+<!-- main pesquisa -->
+	
+		<div id="pesquisa" class="paddingtop paddingbot">
+			<div class="row">
+				<div class="tbsearch col-xs-10 col-xs-offset-1 col-md-4 col-md-offset-4">
+					<p> Use the following box to search for books: </p>
+					<input type="text" id="tbSearch">
+
+						<select id="ddlFilter">
+							<option>Title</option>
+							<option>Author</option>
+							<option>Publisher</option>
+							<option>Subject</option>
+							<option>ISBN</option>
+							
+						</select>
+				</div>
 			</div>
 			
-		</div>
+			<br>
+			
+			<div  id="bookcontainerweb">
+			
+				<div class="col-xs-10 col-xs-offset-1 col-md-4 col-md-offset-3">
+					<button id="home"  class="buttonhome"> 
+						
+						<span class="glyphicon glyphicon-repeat"></span>
+						<br>
+						<span> Reset </span>
 
+					</button>
+		
+					<button class="buttonback  return"> 
+							
+						<span class="glyphicon glyphicon-backward"></span>
+						<br> 
+						<span> Previous book </span>
+								
+					</button>
+				</div>
+				
+				<div class="booksDivweb"></div>
+				
+				<div class="modal"><!-- Place at bottom of page --></div>
+				
+				<br>
+				
+				<div class="buttons clearfix col-xs-12 col-md-8 col-md-offset-2">
+				
+				<!-- Butao like -->
+
+					<button data-opinion="like" class="opinion buttonlike  col-xs-2 col-xs-offset-1 col-md-offset-2 nextbook">
+							
+						<span class="glyphicon glyphicon-heart"></span>
+						<br>
+						<span> Like </span>
+						
+					</button>
+
+				<!-- Butao favorites -->
+
+					<button data-favorito="favorite" id="addfav" class="favorito addfav buttonaddfav col-xs-2 col-xs-offset-1 col-md-offset-1">
+
+						<span class="glyphicon glyphicon-star"></span>
+						<br>
+						<span> Favorite </span>
+
+					</button>
+
+					<button data-favorito="notfavorite" id="removefav" class="favorito removefav buttonrefav col-xs-2 col-xs-offset-1 col-md-offset-1">
+
+						<span class="glyphicon glyphicon-star"></span>
+						<br>
+						<span> Favorite </span>
+
+					</button>
+
+				<!-- Butao dislike -->
+						
+					<button data-opinion="dislike" class="opinion buttondislike col-xs-2 col-xs-offset-1 col-md-offset-1 nextbook">
+						
+						<span class="glyphicon glyphicon-trash"></span>
+						<br>
+						<span> Dislike </span>
+									
+					</button>
+					
+				<br>
+				<br>
+				
+				<button class="consultDbweb">Consult Database!</button>
+				
+				</div>
+				
+			</div>
+		</div>
+		
 <!-- Pagina Final -->
 			
 			<div id="endpage" class="paddingtop final col-xs-10 col-xs-offset-1 col-md-4 col-md-offset-4">
