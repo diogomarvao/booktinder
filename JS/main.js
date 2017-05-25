@@ -6,6 +6,7 @@
 
 		db.transaction(function (tx) {
 
+			// tx.executeSql('DROP TABLE books');
 			tx.executeSql('CREATE TABLE IF NOT EXISTS books (id unique, title, opinion, favorito)');
 		 });
 
@@ -16,24 +17,24 @@
 
 // database de users
 
-		var db = openDatabase('userdb', '1.0', 'userloginDB', 2 * 1024 * 1024);
+		// var db = openDatabase('userdb', '1.0', 'userloginDB', 2 * 1024 * 1024);
 
-		db.transaction(function (tx) {
+		// db.transaction(function (tx) {
 
-			tx.executeSql('CREATE TABLE IF NOT EXISTS userdata (id unique, name, email, password)');
-		 });
+		// 	tx.executeSql('CREATE TABLE IF NOT EXISTS userdata (id unique, name, email, password)');
+		//  });
 
-		 $('#consultuserDb').click(function(){
-			db.transaction(function (tx) {
+		//  $('#consultuserDb').click(function(){
+		// 	db.transaction(function (tx) {
 				
-				tx.executeSql('SELECT * FROM userdata', [], function (tx, results) {
-					$.each(results.rows,function(index,item){
+		// 		tx.executeSql('SELECT * FROM userdata', [], function (tx, results) {
+		// 			$.each(results.rows,function(index,item){
 						
-						console.log(item);
-					});
-				}, null);
-			});
-		});
+		// 				console.log(item);
+		// 			});
+		// 		}, null);
+		// 	});
+		// });
 
 // Ajax
 
@@ -170,6 +171,18 @@ function LoadDataWithHTML(book){
 		}	
 
 	$(".book").eq(0).addClass("active");
+
+
+	$book = $('.book');
+	$id = $('.hiddenFieldId',$book).text();
+
+	$title = $(this).attr(".livros");
+
+	db.transaction(function (tx) {
+		tx.executeSql('INSERT INTO books(id, title) VALUES("' + $id + '","' + $title + '")');
+	}); 
+
+
 };
 
 // LoadDataWithHTML();
@@ -185,13 +198,7 @@ $.ajax({
 		LoadDataWithHTML(item);
 	});
 
-	$book = $('.book.active');
-	$id = $('.hiddenFieldId',$book).text();
-	// $title = biblioteca[$allBooks.index($current)].volumeInfo.title;
-
-	db.transaction(function (tx) {
-	tx.executeSql('INSERT INTO books(id, title) VALUES("' + $id + '","' + $title + '")');
-		}); 
+	
 	
 });
 
@@ -231,8 +238,8 @@ $(".buttonlike").click(function() {
 		$current = $(".book.active");
 		biblioteca[$allBooks.index($current)].opinion = "Like";
 
-		$id = $('.hiddenFieldId',$book).text();
-		$opinion = biblioteca[$allBooks.index($current)].opinion;
+		$('.hiddenFieldId',$book).text();
+		$opinion = $(this).attr(biblioteca[$allBooks.index($current)].opinion);
 
 		db.transaction(function (tx) {
 		tx.executeSql('INSERT INTO books(id, opinion) VALUES("' + $id + '","' + $opinion + '")'); 
@@ -255,7 +262,7 @@ $(".buttondislike").click(function() {
 		biblioteca[$allBooks.index($current)].opinion = "Dislike";
 
 		$id = $('.hiddenFieldId',$book).text();
-		$opinion = biblioteca[$allBooks.index($current)].opinion;
+		$opinion = $(this).attr(biblioteca[$allBooks.index($current)].opinion);
 
 		db.transaction(function (tx) {
 		tx.executeSql('INSERT INTO books(id, opinion) VALUES("' + $id + '","' + $opinion + '")'); 
@@ -340,12 +347,12 @@ $(".buttondislike").click(function() {
 
 		biblioteca[$allBooks.index($current)].favorito = "Favorite";
 		
-		// $id = $current.text();
-		// $favorito = biblioteca[$allBooks.index($current)].favorito = "Favorite";
+		$('.hiddenFieldId',$book).text();
+		$favorito = $(this).attr(biblioteca[$allBooks.index($current)].favorito);
 
-		// db.transaction(function (tx) {
-		// tx.executeSql('INSERT INTO books(id, favorito) VALUES("' + $id + '","' + $favorito + '")'); 
-// });
+		db.transaction(function (tx) {
+		tx.executeSql('INSERT INTO books(id, favorito) VALUES("' + $id + '","' + $favorito + '")'); 
+});
 	});
 
 	$("button.removefav").click(function(){
@@ -356,7 +363,7 @@ $(".buttondislike").click(function() {
 		biblioteca[$allBooks.index($current)].favorito = "Not Favorite";
 		
 		$id = $('.hiddenFieldId',$book).text();
-		$opinion = biblioteca[$allBooks.index($current)].favorito = "Not Favorite";
+		$favorito = $(this).attr(biblioteca[$allBooks.index($current)].favorito);
 
 		db.transaction(function (tx) {
 		tx.executeSql('INSERT INTO books(id, favorito) VALUES("' + $id + '","' + $favorito + '")'); 
@@ -506,37 +513,6 @@ $("#titulohome").click(function(){
 
 $("#favoritelink").click(function(){
 
-	// function LoadFavWithHTML(book){
-	// 		var HTMLtoInsert =`
-			
-	// 			<div class="book col-xs-10 col-xs-offset-1  col-md-6  col-md-offset-3">	
-						
-	// 				<h2 class="livros"></h2>
-
-	// 				<br>
-
-	// 				<img src="" class="imgfav borderbooks imgbooks">
-					
-	// 				<br>
-
-	// 			</div>`;
-
-	// 		$(".favDiv").append(HTMLtoInsert);
-	// };
-
-	// console.log(biblioteca);
-	
-	// $.each(biblioteca,function(index,book){
-
-	// 	// if (  book.favorito === "Favorite"){
-	// 		console.log(book.volumeInfo.title);
-	// 		console.log(book.volumeInfo.imageLinks.thumbnail);
-	// 		$("h2", book).text(book.volumeInfo.title);
-	// 		$(".imgfav",book).attr("src", book.volumeInfo.imageLinks.thumbnail);;
-	// 	// }
-	// 	LoadFavWithHTML()	
-	// });	
-
 	$("#startpage").hide();
 	$("#bookcontainer").hide();
 	$("#endpage").hide();
@@ -625,7 +601,23 @@ $(document).ready(function(){
 	
 });
 
-
+// // search
+// $(document).ready(function(){
+//   $('#search-trigger').click(function(){
+    
+// 		if($('#search-content').is(':visible')) { 
+// 			$('#search-content').hide();
+// 			document.getElementById("search-trigger").style.color = "white";
+// 			document.getElementById("searchicon").style.color = "white";
+// 		} else{ 
+// 			$('#search-content').show();
+// 			document.getElementById("search-trigger").style.color = "#DAA520";
+// 			document.getElementById("searchicon").style.color = "#DAA520";
+// 		}
+		
+// 	});
+	
+// });
 
 // Database
 

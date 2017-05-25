@@ -36,14 +36,20 @@
 			<a id="signuplink" class="borderright topnavlink">Sign Up</a>
 			<span class="topnavicon glyphicon glyphicon-user"></span>
 			
-			<input class="search" type="text" name="q" placeholder="Search.."> 
+			<form class="search" type="text" method="get" action="https://books.google.com/" >
+				<input type="text" name="q" size="25" maxlength="40" value="" placeholder="Search on Google Books.." /> 
+			</form>
+
+		<!-- 	<a id="search-trigger" id="searchlink" class="topnavlink" href="#search">
+			Search</a> -->
+
 			<span class="topnavicon iconpesquisa glyphicon glyphicon-search"></span>
 			
 			<a id="aboutlink" class="about borderleft borderright topnavlink">About Us</a>
 			<a id="contactlink" class="contact borderleft topnavlink">Contacts</a>
 			<a id="favoritelink" class="favorites borderleft topnavlink">Favorites</a>
 			<button id="consultDb"> database </button>
-			<button id="consultuserDb"> userdatabase </button>
+		<!-- 	<button id="consultuserDb"> userdatabase </button> -->
 			  
 		 </nav> 
 
@@ -71,6 +77,12 @@
 				  </fieldset>
 				</form>
 			 </div>        
+
+			<!--  <div id="search-content" class="searchfield">
+				<form class="search" type="text" method="get" action="https://books.google.com/" >
+					<input type="text" name="q" size="25" maxlength="40" value="" placeholder="Search on Google Books.." /> 
+				</form>
+			</div> -->
 
 		<div id="startpage" class="paddingtop col-xs-10 col-xs-offset-1 col-md-4 col-md-offset-4">
 		
