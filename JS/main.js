@@ -1,183 +1,17 @@
 // SQL
 
-var db = openDatabase('wbdb', '1.0', 'books DB', 2 * 1024 * 1024);
+var db = openDatabase('mydb', '1.0', 'books DB', 2 * 1024 * 1024);
 
 db.transaction(function (tx) {
 
-	// tx.executeSql('DROP TABLE books');
+// tx.executeSql('DROP TABLE books');
 
     tx.executeSql('CREATE TABLE IF NOT EXISTS books (id unique, title, opinion)');
  });
-
- 
-$('.consultDbweb').click(function(){
-	db.transaction(function (tx) {
-		tx.executeSql('SELECT * FROM books', [], function (tx, results) {
-	   		$.each(results.rows,function(index,item){
-				console.log(item);
-			});
-		}, null);
-	});
-});
-
-// Ajax para recomendados
-
-// var APIkey = "AIzaSyCI_xHm4tRWwN2pbiATLwQ6VGLuNf5mEkE";
-// var userID = "108534379350483478028";
-// var shelfID= "1001";
-
-// function LoadDataWithHTML(book){
-	// var HTMLtoInsert =`
-	
-	// <div class="book col-xs-10 col-xs-offset-1  col-md-6  col-md-offset-3">
-
-		// <input type="hidden" class="hiddenFieldId"></input>
-			
-		// <img src="" class="imgmain borderbooks imgbooks">
-		
-		// <h2 class="livros"></h2>
-
-		// <h3 class="col-xs-10 col-xs-offset-1  col-md-10  col-md-offset-1 authors"></h3>
-		
-		// <br>
-		// <br>
-		
-		// <p class="livros txt"></p>
-
-		// <div class="row">
-
-			// <div class="col-xs-12 col-md-3">
-			
-				// <h4 class="pubdate"></h4>
-
-			// </div>
-			
-			// <div class="col-xs-12 col-md-6">
-
-				// <h4 class="publisher"></h4>
-
-			// </div>
-
-			// <div class="col-xs-12 col-md-3">
-			
-				// <h4 class="price"></h4>
-
-			// </div>
-
-		// </div>
-		
-		// <div class="clearfix links pull-right">
-		
-			// <span class="pull-left linkstxtleft"> Preview: </span>
-			// <img src="imagens/icon/googlebooks.png" style="width: 20px; height: 20px" class="icon1 pull-left">
-			// <a href="" class="preview pull-left"> Google Books</a>
-			
-		// </div>
-		
-		// <div class="clearfix links pull-left">
-		
-			// <span class="pull-left linkstxtright"> Buy it: </span>	
-			// <img src="imagens/icon/googleplay.png" style="width: 20px; height: 20px" class="icon2 pull-left">
-			// <a href="" class="buy pull-left">Google Play </a>
-						
-		// </div>	
-			
-			// <br>
-	// </div>`;
-
-	// $(".booksDiv").append(HTMLtoInsert);
-	// $currentbook = $(".book").eq(-1);
-	// $('.hiddenFieldId',$currentbook).text(book.id);
-	//console.log(book);
-
-	// Load dos DADOS
-		// capa do livro
-		// if ( typeof book.volumeInfo.imageLinks.thumbnail === "undefined"){
-			// $(".imgmain", $currentbook).text("N/A");
-			// } else {
-				// $(".imgmain", $currentbook).attr("src", book.volumeInfo.imageLinks.thumbnail);
-			// }
-			
-		// titulo
-		// if ( typeof book.volumeInfo.title === "undefined"){
-			// $("h2", $currentbook).text("Title N/A");
-			// } else {
-				// $("h2", $currentbook).text(book.volumeInfo.title);
-			// }
-			
-		// autor	
-		// if ( typeof book.volumeInfo.authors === "undefined"){
-			// $(".authors", $currentbook).text("AUTHOR(S): " + "N/A");
-			// } else {
-				// $(".authors", $currentbook).text("AUTHOR(S): " + book.volumeInfo.authors);
-			// }
-			
-		// data de publicação
-		// if ( typeof book.volumeInfo.publishedDate === "undefined"){
-			// $(".pubdate", $currentbook).text("PUBLISHED IN: " + "N/A");
-			// } else {
-				// $(".pubdate", $currentbook).text("PUBLISHED IN: " + book.volumeInfo.publishedDate);
-			// }
-		
-		// publisher
-		// if ( typeof book.volumeInfo.publisher === "undefined"){
-			// $(".publisher", $currentbook).text("PUBLISHER: " + "N/A");
-			// } else {
-				// $(".publisher", $currentbook).text("PUBLISHER: " + book.volumeInfo.publisher);
-			// }
-			
-		// preço
-		// if ( typeof book.saleInfo.listPrice === "undefined"){
-			// $(".price", $currentbook).text("PRICE: " + "N/A");
-			// } else {
-				// $(".price", $currentbook).text("PRICE: " + book.saleInfo.listPrice.amount + " €");
-			// }	
-			
-		// descrição
-		// if ( typeof book.volumeInfo.description === "undefined"){
-			// $("p", $currentbook).text("N/A");
-			// } else {
-				// $("p" , $currentbook).text(book.volumeInfo.description);
-			// }	
-
-		// preview
-		// if ( typeof book.volumeInfo.previewLink === "undefined"){
-			// $(".preview", $currentbook).text("N/A");
-			// } else {
-				// $(".preview", $currentbook).attr("href", book.volumeInfo.previewLink);
-			// }	
-			
-		// loja
-		// if ( typeof book.saleInfo.buyLink === "undefined"){
-			// $(".buy", $currentbook).text("N/A");
-			// } else {
-				// $(".buy", $currentbook).attr("href", book.saleInfo.buyLink);
-			// }	
-
-		// $(".book").eq(0).addClass("active");
-
-	// };
-
-	// LoadDataWithHTML();
-	// var biblioteca =[];
-
-	// $.ajax({
-		// url:"https://www.googleapis.com/books/v1/users/" + userID + "/bookshelves/" + shelfID + "/volumes?key=" + APIkey
-	// }).done(function(data){
-
-		// console.log(data);
-		// $.each(data.items,function(index,item){
-			// biblioteca.push(item);
-			// LoadDataWithHTML(item);
-		// });
-
-		
-		
-	// });
 	
 	
 // ajax para pesquisa	
-	
+
 	function LoadBook(book){
 	var html = `
 		<div class="book col-xs-10 col-xs-offset-1  col-md-6  col-md-offset-3">
@@ -235,10 +69,13 @@ $('.consultDbweb').click(function(){
 			<br>
 				
 		</div>`;
+
 	$('.booksDivweb').append(html);
 	$bookHTML = $('.book').eq(-1);
-	
-	if ( typeof book.volumeInfo.imageLinks.thumbnail === "undefined"){
+
+		// console.log(biblioteca);
+		// imagem
+		if ( typeof book.volumeInfo.imageLinks === "undefined"){
 			$(".imgmain", $bookHTML).text("N/A");
 			} else {
 				$(".imgmain", $bookHTML).attr("src", book.volumeInfo.imageLinks.thumbnail);
@@ -300,130 +137,92 @@ $('.consultDbweb').click(function(){
 				$(".buy", $bookHTML).attr("href", book.saleInfo.buyLink);
 			}	
 
-	
+		console.log(biblioteca);
 }
 
-// botões
-	var inAnimation = false;
-	$('.opinion button').click(function(){
-		if(!inAnimation){
-			inAnimation = true;
-			$book = $('.book.active');
+// botões e adicionar a base de dados
 
-			var id = $('.hiddenFieldId',$book).text();
-			var title = $('h1',$book).text();
-			var opinion = $(this).attr('data-opinion');
-
-			db.transaction(function (tx) {
-				tx.executeSql('INSERT INTO books(id, title, opinion) VALUES(?,?,?)',[id, title, opinion]);
-			});
-
-			currentIndex++;
-			if((currentIndex % 10) == 0){
-				getData();
-				inAnimation = false;
-			}
-		}
-	});
+	// $('.opinion').click(function(){
+			
+	// });
 
 // search
 
 	var typing = false;
-		var current = null;
-		var currentIndex = 0;
+	var current = null;
+	var currentIndex = 0;
+	var biblioteca =[];
 
-		$('#tbSearch, #tbFilter').keyup(function(event){
-			if(event.which == 13){
-				clearTimeout(current);
-				autoSearch();
+	$('#tbSearch, #tbFilter').keyup(function(event){
+		if(event.which == 13){
+			clearTimeout(current);
+			autoSearch();
+		}
+		else if(!typing){
+			typing = true;
+			current = setTimeout( function(){ autoSearch(); }, 2000);		
+		}
+		else{
+			clearTimeout(current);
+			current = setTimeout( function(){ autoSearch(); }, 2000);	
+		}
+	});
+
+	function autoSearch(){
+		typing = false;
+		currentIndex = 0;
+		getData();
+		
+	}
+
+	function getData(){
+		var searchText = $('#tbSearch').val();
+		if(searchText == "") return;
+		var filter = $('#ddlFilter option:selected').text();
+		var filterText = $('#tbFilter').val();
+		var query = "";
+		if(filterText != ""){			
+			switch(filter){
+				case 'Title':
+					query = "+intitle:" + filterText;
+					break;
+				case 'Author':
+					query = "+inauthor:" + filterText;
+					break;
+				case 'Publisher':
+					query = "+inpublisher:" + filterText;
+					break;
+				case 'Subject':
+					query = "+subject:" + filterText;
+					break;
+				case 'ISBN':
+					query = "+isbn:" + filterText;
+					break;
 			}
-			else if(!typing){
-				typing = true;
-				current = setTimeout( function(){ autoSearch(); }, 2000);		
-			}
-			else{
-				clearTimeout(current);
-				current = setTimeout( function(){ autoSearch(); }, 2000);	
-			}
+		}
+		
+		
+
+		$.ajax({
+			url:"https://www.googleapis.com/books/v1/volumes?q=" + searchText + query + "&startIndex=" + currentIndex
+		}).done(function(data){
+			$('.booksDivweb').empty();
+			$.each(data.items,function(index,item){
+				biblioteca.push(item);
+				LoadBook(item);
+				
+			});
+			$('.book:first-of-type').addClass('active');
+			
+			//console.log(biblioteca);
+			
 		});
 
-		function autoSearch(){
-			typing = false;
-			currentIndex = 0;
-			getData();
-			
-		}
-
-		function getData(){
-			var biblioteca =[];
-			var searchText = $('#tbSearch').val();
-			if(searchText == "") return;
-			var filter = $('#ddlFilter option:selected').text();
-			var filterText = $('#tbFilter').val();
-			var query = "";
-			if(filterText != ""){			
-				switch(filter){
-					case 'Title':
-						query = "+intitle:" + filterText;
-						break;
-					case 'Author':
-						query = "+inauthor:" + filterText;
-						break;
-					case 'Publisher':
-						query = "+inpublisher:" + filterText;
-						break;
-					case 'Subject':
-						query = "+subject:" + filterText;
-						break;
-					case 'ISBN':
-						query = "+isbn:" + filterText;
-						break;
-				}
-			}
-			
-			$.ajax({
-				url:"https://www.googleapis.com/books/v1/volumes?q=" + searchText + query + "&startIndex=" + currentIndex
-			}).done(function(data){
-				$('.booksDivweb').empty();
-				$.each(data.items,function(index,item){
-					biblioteca.push(item);
-					LoadBook(item);
-				});
-				$('.book:first-of-type').addClass('active');
-			});
-		}
-
-		// $(document).on({
-			// ajaxStart: function() { $('#pesquisa').addClass("loading"); },
-			// ajaxStop: function() { $('#pesquisa').removeClass("loading"); }    
-		// });
+	}
 	
 //Buttons
 
-
 //Start
-
-// $("#buttonstart").click(function(){
-
-	// $allBooks = $(".book");
-	// $current = $(".book.active");
-
-	// if ( typeof biblioteca[$allBooks.index($current)].favorito === "undefined"){biblioteca[$allBooks.index($current)].favorito = "Not Favorite"
-	// }
-
-	// $("#startpage").hide();
-	// $(document).ready(function(){
-		// $('#login-content').hide();
-		// document.getElementById("login-trigger").style.color = "white";
-		// document.getElementById("loginicon").style.color = "white";
-	// });
-	// $("#bookcontainer").show();
-	
-	// $(".return").hide();
-	
-// });
-
-//Star Search
 
 $("#buttonstartsearch").click(function(){
 
@@ -450,9 +249,17 @@ var cntrdislike = 0;
 
 $(".buttonlike").click(function() {
 
+	$allBooks = $(".book");
+	$current = $(".book.active");
 
-		$allBooks = $(".book");
-		$current = $(".book.active");
+	var id = $('.hiddenFieldId',$current).text();
+	var title = $('h2',$current).text();
+	var opinion = $(this).attr('data-opinion');
+
+		db.transaction(function (tx) {
+			tx.executeSql('INSERT INTO books(id, title, opinion) VALUES(?,?,?)',[id, title, opinion],null,function(){console.log('error');});
+		});
+
 		// biblioteca[$allBooks.index($current)].opinion = "Like";
 
 	cntrlike++;
@@ -469,6 +276,15 @@ $(".buttondislike").click(function() {
 
 		$allBooks = $(".book");
 		$current = $(".book.active");
+
+	var id = $('.hiddenFieldId',$current).text();
+	var title = $('h1',$current).text();
+	var opinion = $(this).attr('data-opinion');
+
+		db.transaction(function (tx) {
+			tx.executeSql('INSERT INTO books(id unique, title, opinion) VALUES(?,?,?)',[id, title, opinion]);
+		});
+
 		// biblioteca[$allBooks.index($current)].opinion = "Dislike";
 		
 	cntrdislike++;
@@ -504,10 +320,17 @@ $(".buttondislike").click(function() {
 								$(".favDiv").append(HTMLtoInsert);
 								$currentbook = $(".bookfav").eq(-1);
 
-								$(".livrosfav", $currentbook).text("Title: " + book.volumeInfo.title);
+								if ( typeof book.volumeInfo.title === "undefined"){
+											$("h2", $currentbook).text("Title: N/A");
+											} else {
+												$("h2", $currentbook).text("Title: " + book.volumeInfo.title);
+											}
 
-								$(".imgfav", $currentbook).attr("src", book.volumeInfo.imageLinks.thumbnail);
-							
+								if ( typeof book.volumeInfo.imageLinks === "undefined"){
+											$(".imgfav", $currentbook).text("N/A");
+											} else {
+												$(".imgfav", $currentbook).attr("src", book.volumeInfo.imageLinks.thumbnail);
+											}
 							}
 						}
 
@@ -573,6 +396,7 @@ $("button.nextbook").click(function(){
 
 	var index = $allBooks.index($current);
 
+
 	$next = $current.next(".book");
 
 	if( $allBooks.index($current) == $allBooks.length-1 ){
@@ -587,14 +411,9 @@ $("button.nextbook").click(function(){
 		$("#endpage").show();
 	};
 
-
 		$current.removeClass("active");
-	
 			$next.addClass("active");
 
-	
-	// if ( typeof biblioteca[$allBooks.index($current)].favorito === "undefined") {biblioteca[$allBooks.index($current)].favorito = "Not Favorite"
-	// } <----------- MUDAR PARA Os RECOMENDADOS ---------------------------->
 	
 	$("#removefav").hide();
 	$(document).ready(function(){
@@ -614,13 +433,10 @@ $current = $(".book.active");
 	
 	var index = $allBooks.index($current);
 	$previous = $current.prev(".book");
+
+	$current.removeClass("active");
+	$previous.addClass("active");
 	
-	// $current.fadeOut(50,function(){
-		$current.removeClass("active");
-		// $previous.fadeIn(50,function(){
-			$previous.addClass("active");
-		// });
-	// });
 		
 	if($allBooks.index($current) == $allBooks.length-9){
 		$(".return").hide();
@@ -800,13 +616,12 @@ $(document).ready(function(){
 
 // Database
 
- $('#consultDb').click(function(){
+  
+$("button.consultDb").click(function(){
 	db.transaction(function (tx) {
-		
 		tx.executeSql('SELECT * FROM books', [], function (tx, results) {
 	   		$.each(results.rows,function(index,item){
-	   			
-				console.log(item);
+	   			console.log(item);
 			});
 		}, null);
 	});
