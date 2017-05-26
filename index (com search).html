@@ -48,7 +48,9 @@
 			<a id="aboutlink" class="about borderleft borderright topnavlink">About Us</a>
 			<a id="contactlink" class="contact borderleft topnavlink">Contacts</a>
 			<a id="favoritelink" class="favorites borderleft topnavlink">Favorites</a>
-			<button class="consultDb">Consult Database!</button>
+			 <!-- consultar database  -->
+			<!-- <button class="consultDb">Consult Database!</button>  -->
+		 
 			  
 		 </nav> 
 
@@ -80,7 +82,7 @@
 
 		<div id="startpage" class="paddingtop col-xs-10 col-xs-offset-1 col-md-4 col-md-offset-4">
 		
-			<p class="txtintro"> Welcome to the BookFinder! <br> Rate books you have read and discover new ones. </p>
+			<p class="txtintro"> Welcome to the BookFinder! <br> Begin your search now, by pressing the button below. </p>
 			
 			<img src="imagens\home.jpg" class="pagination-centered imagehome">
 			
@@ -103,7 +105,7 @@
 			<div class="row">
 				<div class="tbsearch col-xs-10 col-xs-offset-1 col-md-4 col-md-offset-4">
 					<span> Use the following box to search for books: </span>
-					<input class="tbsearchgeral" type="text" id="tbSearch">
+					<input class="tbsearchgeral" type="text" id="tbSearch" placeholder="Search Books..">
 					<br>
 					<div class="filtros">
 						<span> Filter: </span>
@@ -114,7 +116,7 @@
 							<option>Subject</option>
 							<option>ISBN</option>	
 						</select>
-						<input type="text" id="tbFilter">
+						<input type="text" id="tbFilter" placeholder="Filter..">
 					</div>
 				</div>
 			</div>
@@ -124,7 +126,7 @@
 			<div  id="bookcontainerweb">
 			
 				<div class="col-xs-10 col-xs-offset-1 col-md-4 col-md-offset-3">
-					<button id="home"  class="buttonhome"> 
+					<button id="home"  class="buttondisplay buttonhome"> 
 						
 						<span class="glyphicon glyphicon-repeat"></span>
 						<br>
@@ -151,7 +153,7 @@
 				
 				<!-- Butao like -->
 
-					<button data-opinion="like" class="opinion buttonlike  col-xs-2 col-xs-offset-1 col-md-offset-2 nextbook">
+					<button data-opinion="like" class="buttondisplay opinion buttonlike  col-xs-2 col-xs-offset-1 col-md-offset-2 nextbook">
 							
 						<span class="glyphicon glyphicon-heart"></span>
 						<br>
@@ -161,7 +163,7 @@
 
 				<!-- Butao favorites -->
 
-					<button data-favorito="favorite" id="addfav" class="favorito addfav buttonaddfav col-xs-2 col-xs-offset-1 col-md-offset-1">
+					<button data-favorito="favorite" id="addfav" class="buttondisplay favorito addfav buttonaddfav col-xs-2 col-xs-offset-1 col-md-offset-1">
 
 						<span class="glyphicon glyphicon-star"></span>
 						<br>
@@ -179,7 +181,7 @@
 
 				<!-- Butao dislike -->
 						
-					<button data-opinion="dislike" class="opinion buttondislike col-xs-2 col-xs-offset-1 col-md-offset-1 nextbook">
+					<button data-opinion="dislike" class="buttondisplay opinion buttondislike col-xs-2 col-xs-offset-1 col-md-offset-1 nextbook">
 						
 						<span class="glyphicon glyphicon-trash"></span>
 						<br>
@@ -199,13 +201,13 @@
 			
 			<div id="endpage" class="paddingtop final col-xs-10 col-xs-offset-1 col-md-4 col-md-offset-4">
 				
-				<button id="returnend" class="buttonback"> 
+				<!-- <button id="returnend" class="buttonback">  -->
 				
-					<span class="glyphicon glyphicon-backward"></span>
-					<br> 
-					<span> Previous book </span>
+					<!-- <span class="glyphicon glyphicon-backward"></span> -->
+					<!-- <br>  -->
+					<!-- <span> Previous book </span> -->
 					
-				</button>
+				<!-- </button> -->
 			
 				<h2> End Result </h2>
 
@@ -340,17 +342,17 @@
 		<form action="/action_page.php">					
 			User Name: 
 				<br>
-				<input type="text" name="username">
+				<input type="text" name="username" placeholder="User Name.." required>
 				<br>
 				<br>
 			Email:
 				<br>
-				<input type="email" name="email">
+				<input type="email" name="email" placeholder="Email.." required>
 				<br>
 				<br>
 			Password:
 				<br>
-				<input type="password" name="password">
+				<input type="password" name="password" placeholder="Password.." required>
 				<br>
 				<br>
 			<input type="submit" value="Submit">

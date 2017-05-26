@@ -7,8 +7,7 @@ db.transaction(function (tx) {
 // tx.executeSql('DROP TABLE books');
 
     tx.executeSql('CREATE TABLE IF NOT EXISTS books (id unique, title, opinion)');
- });
-	
+ });	
 	
 // ajax para pesquisa	
 
@@ -33,7 +32,7 @@ db.transaction(function (tx) {
 				<div class="col-xs-12 col-md-3">
 				
 					<h4 class="pubdate"></h4>
-
+				
 				</div>
 				
 				<div class="col-xs-12 col-md-6">
@@ -76,7 +75,7 @@ db.transaction(function (tx) {
 		// console.log(biblioteca);
 		// imagem
 		if ( typeof book.volumeInfo.imageLinks === "undefined"){
-			$(".imgmain", $bookHTML).text("N/A");
+			$(".imgmain", $bookHTML).attr("src", "imagens/imagesnotfound.jpg");
 			} else {
 				$(".imgmain", $bookHTML).attr("src", book.volumeInfo.imageLinks.thumbnail);
 			}
@@ -137,14 +136,16 @@ db.transaction(function (tx) {
 				$(".buy", $bookHTML).attr("href", book.saleInfo.buyLink);
 			}	
 
+		// ID
+		
+		if( typeof book.id !== "undefined"){
+			$('.hiddenFieldId',$bookHTML).text(book.id);
+		}
+		
+		$(".buttondisplay").show();
+		window.scrollBy(0,50);
 		console.log(biblioteca);
 }
-
-// botões e adicionar a base de dados
-
-	// $('.opinion').click(function(){
-			
-	// });
 
 // search
 
@@ -172,7 +173,6 @@ db.transaction(function (tx) {
 		typing = false;
 		currentIndex = 0;
 		getData();
-		
 	}
 
 	function getData(){
@@ -200,8 +200,6 @@ db.transaction(function (tx) {
 					break;
 			}
 		}
-		
-		
 
 		$.ajax({
 			url:"https://www.googleapis.com/books/v1/volumes?q=" + searchText + query + "&startIndex=" + currentIndex
@@ -210,14 +208,11 @@ db.transaction(function (tx) {
 			$.each(data.items,function(index,item){
 				biblioteca.push(item);
 				LoadBook(item);
-				
 			});
 			$('.book:first-of-type').addClass('active');
 			
 			//console.log(biblioteca);
-			
 		});
-
 	}
 	
 //Buttons
@@ -225,22 +220,31 @@ db.transaction(function (tx) {
 //Start
 
 $("#buttonstartsearch").click(function(){
-
 	$allBooks = $(".book");
 	$current = $(".book.active");
-
+	
 	$("#startpage").hide();
-	$(document).ready(function(){
-		$('#login-content').hide();
-		document.getElementById("login-trigger").style.color = "white";
-		document.getElementById("loginicon").style.color = "white";
-	});
+	hslogin();
 	$("#pesquisa").show();
 	
+	$(".book").hide();
+	$(".buttondisplay").hide();
 	$(".return").hide();
 	
 });
 
+$('.buttons button').click(function(){
+
+		$book = $('.book.active');
+
+		var id = $('.hiddenFieldId',$current).text();
+		var title = $('h2',$current).text();
+		var opinion = $(this).attr('data-opinion');
+
+		db.transaction(function (tx) {
+			tx.executeSql('INSERT INTO books(id, title, opinion) VALUES(?,?,?)',[id, title, opinion],null,function(){console.log('error');});
+		});
+});
 
 // likes
 
@@ -248,20 +252,6 @@ var cntrlike = 0;
 var cntrdislike = 0;
 
 $(".buttonlike").click(function() {
-
-	$allBooks = $(".book");
-	$current = $(".book.active");
-
-	var id = $('.hiddenFieldId',$current).text();
-	var title = $('h2',$current).text();
-	var opinion = $(this).attr('data-opinion');
-
-		db.transaction(function (tx) {
-			tx.executeSql('INSERT INTO books(id, title, opinion) VALUES(?,?,?)',[id, title, opinion],null,function(){console.log('error');});
-		});
-
-		// biblioteca[$allBooks.index($current)].opinion = "Like";
-
 	cntrlike++;
 	$("#likecounter").text(cntrlike);
 });
@@ -273,71 +263,45 @@ var cntrlike = 0;
 var cntrdislike = 0;
 
 $(".buttondislike").click(function() {
-
-		$allBooks = $(".book");
-		$current = $(".book.active");
-
-	var id = $('.hiddenFieldId',$current).text();
-	var title = $('h1',$current).text();
-	var opinion = $(this).attr('data-opinion');
-
-		db.transaction(function (tx) {
-			tx.executeSql('INSERT INTO books(id unique, title, opinion) VALUES(?,?,?)',[id, title, opinion]);
-		});
-
-		// biblioteca[$allBooks.index($current)].opinion = "Dislike";
-		
 	cntrdislike++;
 	$("#dislikecounter").text(cntrdislike);
 });
-
 
 // favoritos
 
 	// botao add favorite
 		function LoadFavWithHTML(biblioteca){
+			$.each(biblioteca,function(index,book){
+				if (typeof book.favorito !== "undefined"){
+					if (book.favorito == "Favorite"){
 
-					$.each(biblioteca,function(index,book){
+						var HTMLtoInsert =`
+							<div class="bookfav col-xs-10 col-xs-offset-1  col-md-6  col-md-offset-3">			
+								<h2 class="livrosfav"></h2>
+								<br>
+								<img src="" class="imgfav borderbooks imgbooks">
+								<br>
+							</div>`;
+							
+						$(".favDiv").append(HTMLtoInsert);
+						$currentbook = $(".bookfav").eq(-1);
 
-						if (typeof book.favorito !== "undefined"){
+						if ( typeof book.volumeInfo.title === "undefined"){
+									$("h2", $currentbook).text("Title: N/A");
+									} else {
+										$("h2", $currentbook).text("Title: " + book.volumeInfo.title);
+									}
 
-							if (book.favorito == "Favorite"){
-
-								var HTMLtoInsert =`
-								
-									<div class="bookfav col-xs-10 col-xs-offset-1  col-md-6  col-md-offset-3">	
-											
-										<h2 class="livrosfav"></h2>
-
-										<br>
-
-										<img src="" class="imgfav borderbooks imgbooks">
-										
-										<br>
-
-									</div>`;
-
-								$(".favDiv").append(HTMLtoInsert);
-								$currentbook = $(".bookfav").eq(-1);
-
-								if ( typeof book.volumeInfo.title === "undefined"){
-											$("h2", $currentbook).text("Title: N/A");
-											} else {
-												$("h2", $currentbook).text("Title: " + book.volumeInfo.title);
-											}
-
-								if ( typeof book.volumeInfo.imageLinks === "undefined"){
-											$(".imgfav", $currentbook).text("N/A");
-											} else {
-												$(".imgfav", $currentbook).attr("src", book.volumeInfo.imageLinks.thumbnail);
-											}
-							}
-						}
-
-					});
-					
-		}	
-
+						if ( typeof book.volumeInfo.imageLinks === "undefined"){
+									$(".imgfav", $currentbook).text("N/A");
+									} else {
+										$(".imgfav", $currentbook).attr("src", book.volumeInfo.imageLinks.thumbnail);
+									}
+					}
+				}
+			});		
+		}
+		
 		$("#addfav").click(function() {   
 			$(".bookfav").empty();
 			LoadFavWithHTML(biblioteca);
@@ -350,9 +314,7 @@ $(".buttondislike").click(function() {
 
 
 	// Botao remove favorite
-
 	$(document).ready(function() {
-
 	    $(".removefav").click(function() {
 
 	        $("#removefav").hide();
@@ -361,83 +323,62 @@ $(".buttondislike").click(function() {
 	});
 
 	// adicionar livro aos favoritos
-
 	$allBooks = $(".book");
 	$current = $(".book.active");
 
 	$("button.addfav").click(function(){
-
 		$allBooks = $(".book");
 		$current = $(".book.active");
 
 		biblioteca[$allBooks.index($current)].favorito = "Favorite";
-		
 	});
-		
 
 	$("button.removefav").click(function(){
-
 		$allBooks = $(".book");
 		$current = $(".book.active");
-
-		biblioteca[$allBooks.index($current)].favorito = "Not Favorite";
 		
+		biblioteca[$allBooks.index($current)].favorito = "Not Favorite";
 	});
 
 
 // Nextbook
 
 $("button.nextbook").click(function(){
-
+	
 	$(".return").show();
 
 	$allBooks = $(".book");
 	$current = $(".book.active");
-
 	var index = $allBooks.index($current);
-
-
 	$next = $current.next(".book");
 
 	if( $allBooks.index($current) == $allBooks.length-1 ){
 		$next = $allBooks.eq(-1);
 		$("#bookcontainer").hide();
 		$("#pesquisa").hide();
-		$(document).ready(function(){
-			$('#login-content').hide();
-			document.getElementById("login-trigger").style.color = "white";
-			document.getElementById("loginicon").style.color = "white";
-		});
+		hslogin();
 		$("#endpage").show();
 	};
-
-		$current.removeClass("active");
-			$next.addClass("active");
-
 	
+	$current.removeClass("active");
+	$next.addClass("active");
 	$("#removefav").hide();
-	$(document).ready(function(){
-		$('#login-content').hide();
-		document.getElementById("login-trigger").style.color = "white";
-		document.getElementById("loginicon").style.color = "white";
-	});
+	hslogin();
 	$("#addfav").show();
 });
 
 // back
 
 $("button.return").click(function(){
-
 $allBooks=$(".book");
-$current = $(".book.active");
+$current = $(".book.active");	
+var index = $allBooks.index($current);
+$previous = $current.prev(".book");
 	
-	var index = $allBooks.index($current);
-	$previous = $current.prev(".book");
-
+	hslogin();
 	$current.removeClass("active");
 	$previous.addClass("active");
 	
-		
 	if($allBooks.index($current) == $allBooks.length-9){
 		$(".return").hide();
 	}
@@ -445,16 +386,14 @@ $current = $(".book.active");
 
 // back endpage
 
-	$("#returnend").click(function(){
-		$allBooks=$(".book");
-		$("#endpage").hide();
-		$(document).ready(function(){
-			$('#login-content').hide();
-			document.getElementById("login-trigger").style.color = "white";
-			document.getElementById("loginicon").style.color = "white";
-		});
-		$("#bookcontainer").show();
-	});
+	// $("#returnend").click(function(){
+		// $allBooks=$(".book");
+		// $current=$allBooks.eq(-1)
+		// $("#endpage").hide();
+		// hslogin();
+		// $("#bookcontainer").show();
+		// $current.addClass("active");
+	// });
 
 //reset
 
@@ -465,11 +404,7 @@ $("#reset").click(function(){
 	$("#dislikecounter").text(cntrdislike);
 	
 	$("#endpage").hide();
-	$(document).ready(function(){
-		$('#login-content').hide();
-		document.getElementById("login-trigger").style.color = "white";
-		document.getElementById("loginicon").style.color = "white";
-	});
+	hslogin();
 	$("#startpage").show();
 
 	$(".book.active").removeClass("active");
@@ -485,11 +420,7 @@ $("#home").click(function(){
 	$("#dislikecounter").text(cntrdislike);
 			
 	$("#bookcontainer").hide();
-	$(document).ready(function(){
-		$('#login-content').hide();
-		document.getElementById("login-trigger").style.color = "white";
-		document.getElementById("loginicon").style.color = "white";
-	});
+	hslogin();
 	$("#pesquisa").hide();
 	$("#startpage").show();
 
@@ -500,129 +431,98 @@ $("#home").click(function(){
 // barra de navegacao
 
 	// titulo
+	$("#titulohome").click(function(){
+		$("#contactpage").hide();
+		$("#bookcontainer").hide();
+		$("#endpage").hide();
+		$("#aboutpage").hide();
+		$("#signup").hide();
+		$("#pesquisa").hide();
+		$("#favoritepage").hide();
+		hslogin();
+		$("#startpage").show();
+	})
 
-$("#titulohome").click(function(){
-
-	$("#contactpage").hide();
-	$("#bookcontainer").hide();
-	$("#endpage").hide();
-	$("#aboutpage").hide();
-	$("#signup").hide();
-	$("#pesquisa").hide();
-	$("#favoritepage").hide();
-	$(document).ready(function(){
-		$('#login-content').hide();
-		document.getElementById("login-trigger").style.color = "white";
-		document.getElementById("loginicon").style.color = "white";
-	});
-	$("#startpage").show();
-})
-
-	// Favorites
-
-$("#favoritelink").click(function(){
-
-	$("#startpage").hide();
-	$("#bookcontainer").hide();
-	$("#endpage").hide();
-	$("#contactpage").hide();
-	$("#aboutpage").hide();
-	$("#signup").hide();
-	$("#pesquisa").hide();
-	$("#favoritepage").show();
-	$(document).ready(function(){
-		$('#login-content').hide();
-		document.getElementById("login-trigger").style.color = "white";
-		document.getElementById("loginicon").style.color = "white";
-	});
-	$(".bookfav").addClass("active");
-	
-})
+		// Favorites
+	$("#favoritelink").click(function(){
+		$("#startpage").hide();
+		$("#bookcontainer").hide();
+		$("#endpage").hide();
+		$("#contactpage").hide();
+		$("#aboutpage").hide();
+		$("#signup").hide();
+		$("#pesquisa").hide();
+		$("#favoritepage").show();
+		hslogin();
+		$(".bookfav").addClass("active");
+	})
 
 	// contactos
-
-$("#contactlink").click(function(){
-
-	$("#startpage").hide();
-	$("#bookcontainer").hide();
-	$("#endpage").hide();
-	$("#aboutpage").hide();
-	$("#signup").hide();
-	$("#pesquisa").hide();
-	$("#favoritepage").hide();
-	$(document).ready(function(){
-		$('#login-content').hide();
-		document.getElementById("login-trigger").style.color = "white";
-		document.getElementById("loginicon").style.color = "white";
-	});
-	$("#contactpage").show();
-})
+	$("#contactlink").click(function(){
+		$("#startpage").hide();
+		$("#bookcontainer").hide();
+		$("#endpage").hide();
+		$("#aboutpage").hide();
+		$("#signup").hide();
+		$("#pesquisa").hide();
+		$("#favoritepage").hide();
+		hslogin();
+		$("#contactpage").show();
+	})
 
 	// about
-
-$("#aboutlink").click(function(){
-
-	$("#startpage").hide();
-	$("#bookcontainer").hide();
-	$("#endpage").hide();
-	$("#contactpage").hide();
-	$("#signup").hide();
-	$("#favoritepage").hide();
-	$("#pesquisa").hide();
-	$(document).ready(function(){
-		$('#login-content').hide();
-		document.getElementById("login-trigger").style.color = "white";
-		document.getElementById("loginicon").style.color = "white";
-	});
-	$("#aboutpage").show();
-})
+	$("#aboutlink").click(function(){
+		$("#startpage").hide();
+		$("#bookcontainer").hide();
+		$("#endpage").hide();
+		$("#contactpage").hide();
+		$("#signup").hide();
+		$("#favoritepage").hide();
+		$("#pesquisa").hide();
+		hslogin();
+		$("#aboutpage").show();
+	})
 
 	// signup
+	$("#signuplink").click(function(){
+		$("#startpage").hide();
+		$("#bookcontainer").hide();
+		$("#endpage").hide();
+		$("#contactpage").hide();
+		$("#aboutpage").hide();
+		$("#pesquisa").hide();
+		$("#favoritepage").hide();
+		hslogin();
+		$("#signup").show();
+	})
 
-$("#signuplink").click(function(){
-
-	$("#startpage").hide();
-	$("#bookcontainer").hide();
-	$("#endpage").hide();
-	$("#contactpage").hide();
-	$("#aboutpage").hide();
-	$("#pesquisa").hide();
-	$("#favoritepage").hide();
+	// login
 	$(document).ready(function(){
-		$('#login-content').hide();
-		document.getElementById("login-trigger").style.color = "white";
-		document.getElementById("loginicon").style.color = "white";
-	});
-	$("#signup").show();
-})
-
-// login
-$(document).ready(function(){
-  $('#login-trigger').click(function(){
-    
-		if($('#login-content').is(':visible')) { 
-			$('#login-content').hide();
-			document.getElementById("login-trigger").style.color = "white";
-			document.getElementById("loginicon").style.color = "white";
-		} else{ 
-			$('#login-content').show();
-			document.getElementById("login-trigger").style.color = "#DAA520";
-			document.getElementById("loginicon").style.color = "#DAA520";
-		}
+	  $('#login-trigger').click(function(){
 		
+			if($('#login-content').is(':visible')) { 
+				hslogin();
+			} else{ 
+				$('#login-content').show();
+				document.getElementById("login-trigger").style.color = "#DAA520";
+				document.getElementById("loginicon").style.color = "#DAA520";
+			}	
+		});
 	});
-	
-});
+
+	function hslogin(){
+		$('#login-content').hide();
+				document.getElementById("login-trigger").style.color = "white";
+				document.getElementById("loginicon").style.color = "white";
+	}
 
 // Database
-
-  
-$("button.consultDb").click(function(){
-	db.transaction(function (tx) {
-		tx.executeSql('SELECT * FROM books', [], function (tx, results) {
-	   		$.each(results.rows,function(index,item){
-	   			console.log(item);
-			});
-		}, null);
+	$("button.consultDb").click(function(){
+		db.transaction(function (tx) {
+			tx.executeSql('SELECT * FROM books', [], function (tx, results) {
+				$.each(results.rows,function(index,item){
+					console.log(item);
+				});
+			}, null);
+		});
 	});
-});

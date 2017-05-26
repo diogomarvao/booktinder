@@ -395,11 +395,14 @@ html, body {
 			font-size: 12px;
 			line-height:125%;
 			text-align: justify;
-			padding: 15px 15px 15px 15px;
+			padding: 10px 15px 15px 15px;
 			border-radius: 10px;
 			box-shadow: 2px 2px 2px #000000;
 			height: 125px;
-			/*overflow: hidden;*/
+			/* display: block; */
+			overflow: hidden;
+			/* white-space: nowrap; */
+			text-overflow: ellipsis;
 			}
 
 		.txtresults{
