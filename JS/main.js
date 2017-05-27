@@ -276,10 +276,11 @@ $(".buttondislike").click(function() {
 					if (book.favorito == "Favorite"){
 
 						var HTMLtoInsert =`
-							<div class="bookfav col-xs-10 col-xs-offset-1  col-md-6  col-md-offset-3">			
+							<div class="bookfav col-xs-10 col-xs-offset-1  col-md-8  col-md-offset-2">			
 								<h2 class="livrosfav"></h2>
 								<br>
 								<img src="" class="imgfav borderbooks imgbooks">
+								<br>
 								<br>
 							</div>`;
 							

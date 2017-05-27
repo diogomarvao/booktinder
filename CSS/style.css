@@ -349,6 +349,9 @@ html, body {
 		padding: 1% 1% 1% 1%;
 		box-shadow: 2px 2px 2px #000000;
 		border-radius: 15px;
+		max-height: 30px;
+		overflow: hidden;
+		text-overflow: ellipsis;
 		}
 
 	/*Price publisher date*/
@@ -398,7 +401,8 @@ html, body {
 			padding: 10px 15px 15px 15px;
 			border-radius: 10px;
 			box-shadow: 2px 2px 2px #000000;
-			height: 125px;
+			height: 120px;
+			/* max-height: 120px; */
 			/* display: block; */
 			overflow: hidden;
 			/* white-space: nowrap; */
@@ -672,15 +676,36 @@ html, body {
 		color: white; 
 	}
 
-#fav{
- display: block;
- width: 48px;
- height: 48px;
 
-}
+/* Favoritos */
+	
+	.livrosfav{
+		text-align: center;
+		background-color:#DEB887;
+		font-family: "Lucida Console", Monaco, monospace; 
+		font-size: 15px;
+		font-weight: bolder;
+		color: black;
+		border-style: solid;
+		border-color: transparent; 
+		line-height:125%;
+		padding: 2% 2% 2% 2%;
+		box-shadow: 2px 2px 2px #000000;
+		border-radius: 50px;
+		margin-top: 2%;
+		margin-bottom: 1%;
+		}
+	}
+	
+	#fav{
+	 display: block;
+	 width: 48px;
+	 height: 48px;
 
-#fav.active{
-}
+	}
+
+	#fav.active{
+	}
 
 @media screen and (max-width: 470px){
 	.title{
