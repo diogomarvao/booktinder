@@ -1,0 +1,717 @@
+html, body {
+	background-image: url("../imagens/fundo.jpg");
+	background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.paddingtop{
+	padding-top: 100px;
+}
+
+.paddingbot{
+	padding-bottom: 50px;
+}
+
+/* <!-- Barra de navegação --> */
+
+	/* Add a black background color to the top navigation */
+		.topnav {
+			position:fixed;
+			width:100%;
+			background-color: #800000;
+			overflow: hidden;
+			border-style: solid;
+			border-color: transparent;
+			box-shadow: 5px 5px 5px #000000; 
+			z-index: 500;
+		}
+
+	/* Style the links inside the navigation bar */
+		.topnav a {
+			display: block;
+			text-align: center;
+			/* padding: 5px 5px; */
+		}
+
+	/* Change the color of links on hover */
+		.topnav a:hover {
+			cursor: hand;
+			color: #DAA520;
+		}
+
+	/* Add a color to the active/current link */
+		.topnav a.active {
+			background-color: #4CAF50;
+			color: white;
+	}
+
+	/* titulo */
+		.title{
+			float: left;
+			 font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+			 text-align:center;
+			 font-weight: bold;
+			 font-size: 30px;
+			 color:#DAA520;
+			 margin-left: 15px;
+			 text-shadow: 2px 2px 3px #000000;
+		}
+
+	/*Contact*/
+		.contact{
+			cursor: hand;
+			display:none;
+		}
+
+		.contact.active{
+			display:block;
+		}
+
+	/*About*/
+		.about{
+			cursor: hand;
+			display:none;
+		}
+
+		.contact.active{
+			display:block;
+		}
+
+	/*signup*/
+
+		#signup{
+			cursor: hand;
+			display:none;
+		}
+
+	/*favorite*/
+		
+		#favoritepage{
+			cursor: hand;
+			display:none;
+		}
+		
+	/* Barra de pesquisa */
+		.input[type=text] {
+			width: 130px;
+			-webkit-transition: width 0.4s ease-in-out;
+			transition: width 0.4s ease-in-out;
+		}
+
+		.search{
+			float:right;
+			margin-top: 7px;
+		}
+
+	/* links */
+		.topnavlink{
+			float: right;
+			 font-family:  "Lucida Console", Monaco, monospace;
+			 text-align:center;
+			 font-weight: bold;
+			 color: white;
+			 color: white;
+			 font-size: 15px;
+			 padding: 10px 10px 0px 10px;
+			 text-shadow: 2px 2px 3px #000000;
+		}
+		
+	/* icons */
+		.topnavicon{
+			float:right;
+			font-size: 15px;
+			margin-top: 11px;
+			color: white;
+			text-shadow: 2px 2px 3px #000000;
+			padding: 0px 0px 0px 10px;
+		}
+
+		.iconpesquisa{
+			padding: 0px 5px 0px 10px;
+		}
+		
+	/* separadores */
+		.borderright{
+			border-right: 1px solid white;
+			text-shadow: 2px 2px 3px #000000;
+			padding: 10px 10px 10px 10px;
+		}
+
+		.borderleft{
+			border-left: 1px solid white;
+			text-shadow: 2px 2px 3px #000000;
+			padding: 10px 10px 10px 10px;
+		}
+
+	/* Login */
+	
+		.loginfield{
+			position:fixed;
+			background-color: #800000;
+			overflow: hidden;
+			border-style: solid;
+			border-color: transparent;
+			box-shadow: 5px 5px 5px #000000; 
+			z-index: 499;
+			border-radius: 10px;
+			padding: 0px 5px 10px 10px;
+			right:0;
+		}
+		
+		.keepcbox{
+			color:white;
+			margin-top: 5px;
+			margin-right: 10px;
+			font-size: 12px;
+		}
+		
+		.loginbtn{
+			margin-top:5px;
+		}
+
+		/* search */
+	
+	/*	.searchfield{
+			position:fixed;
+			background-color: #800000;
+			overflow: hidden;
+			border-style: solid;
+			border-color: transparent;
+			box-shadow: 5px 5px 5px #000000; 
+			z-index: 499;
+			border-radius: 10px;
+			padding: 0px 5px 10px 10px;
+			right:0;
+		}*/
+		
+/* <!-- corpo --> */
+	h2{
+		text-align: center;
+		background-color:#A52A2A;
+		font-family: "Trebuchet MS", Helvetica, sans-serif; 
+		font-size: 20px;
+		font-weight: bolder;
+		color: white;
+		border-style: solid;
+		border-color: #B8860B; 
+		line-height:125%;
+		padding: 2% 2% 2% 2%;
+		box-shadow: 2px 2px 2px #000000;
+		border-radius: 50px;
+		margin-top: 2%;
+		margin-bottom: 1%;
+		}
+
+	/* classes display */	
+		.book{
+			display:none; 
+			}
+			
+		.book.active{
+			display:block;
+		}
+
+		#bookcontainer{
+			display: none;
+		}
+
+		#endpage{
+			display:none;
+		}
+
+		#addfav{
+			display: block;
+		}
+
+		#removefav{
+			display:none;
+		}
+
+/* <!-- Links topnav --> */
+
+	/* Contacts */
+		.contacts{
+			background-color:#FAFAD2;
+			border-style: solid;
+			border-color: #CD5C5C;
+			font-family: "Lucida Console", Monaco, monospace;
+			font-size: 15px;
+			line-height:125%;
+			text-align: center;
+			padding: 15px 15px 15px 15px;
+			border-radius: 10px;
+			box-shadow: 2px 2px 2px #000000;
+			}	
+		
+		.contactstitle{
+			font-weight: bold;
+		}
+		
+	/* signup */
+		.signup{
+			background-color:#FAFAD2;
+			border-style: solid;
+			border-color: #CD5C5C;
+			font-family: "Lucida Console", Monaco, monospace;
+			font-size: 15px;
+			line-height:125%;
+			text-align: center;
+			padding: 15px 15px 15px 15px;
+			border-radius: 10px;
+			box-shadow: 2px 2px 2px #000000;
+			font-weight: bold
+		}	
+
+	/* login */
+	
+		#login-content {
+			display: none;
+		}		
+		
+/* <!-- Primeira pagina --> */
+
+	/* imagem da 1ª pagina */
+		.imagehome{
+			max-width: 325px;
+			margin: auto;
+			display: block;
+			transition: all 0.5s ease;
+		}
+
+/* <!-- Paginas do tinder --> */
+
+	/* capas de livros */
+		img{
+			max-height: 330px; 
+			max-width: 200px;
+			margin: auto;
+			margin-top: 0%;
+			display: block;
+			transition: all 0.5s ease;
+		}
+
+		.imgmain{
+
+		}
+
+		.imgbooks{
+			height: 250px; 
+			width: 160px;
+		}
+		.imgbooks:hover{
+		-webkit-transform: scale(1.2);
+		-moz-transform:scale(1.2);
+		transition: all 0.5s ease;
+		}
+		
+		.borderbooks{
+			border-style: solid;
+			border-color: #B8860B;
+			border-radius: 10px;
+			box-shadow: 2px 2px 2px #000000;	
+		}
+		
+	/* Autor */
+
+		h3{
+		margin-top: 0%;
+		margin-bottom: 1%;
+		text-align: center;
+		background-color:#DEB887;
+		font-family: "Lucida Console", Monaco, monospace; 
+		font-size: 15px;
+		font-weight: bolder;
+		color: black;
+		border-style: solid;
+		border-color: transparent; 
+		line-height:125%;
+		padding: 1% 1% 1% 1%;
+		box-shadow: 2px 2px 2px #000000;
+		border-radius: 15px;
+		}
+
+	/*Price publisher date*/
+		h4{
+		max-height: 40px;
+		margin-top: 1%;
+		margin-bottom: 5%;
+		text-align: center;
+		background-color:#DEB887;
+		font-family: "Verdana", Geneva, sans-serif;
+		font-size: 12px;
+		font-weight: bolder;
+		color: black;
+		border-style: solid;
+		border-color: transparent; 
+		line-height:125%;
+		 padding: 0% 1% 0% 0%; 
+		box-shadow: 2px 2px 2px #000000;
+		border-radius: 15px;
+		}
+
+
+	/* Texto */
+		.txtintro{
+			background-color:#FAFAD2;
+			border-style: solid;
+			border-color: #CD5C5C;
+			font-family: "Lucida Console", Monaco, monospace;
+			font-size: 15px;
+			line-height:125%;
+			text-align: center;
+			padding: 15px 15px 15px 15px;
+			border-radius: 10px;
+			box-shadow: 2px 2px 2px #000000;
+			}
+		
+		.txt{
+			margin-top: 1%;
+			margin-bottom: 1%;
+			background-color:#FAFAD2;
+			border-style: solid;
+			border-color: #CD5C5C;
+			font-family: "Lucida Console", Monaco, monospace;
+			font-size: 15px;
+			line-height:125%;
+			text-align: justify;
+			padding: 15px 15px 15px 15px;
+			border-radius: 10px;
+			box-shadow: 2px 2px 2px #000000;
+			height: 125px;
+			}
+
+		.txtresults{
+			background-color:#FAFAD2;
+			border-style: solid;
+			border-color: #CD5C5C;
+			font-family: "Lucida Console", Monaco, monospace;
+			font-size: 15px;
+			line-height:125%;
+			text-align: center;
+			padding: 15px 15px 15px 15px;
+			border-radius: 10px;
+			box-shadow: 2px 2px 2px #000000;
+			}	
+
+	/* Butoes */
+
+		.start{
+			cursor: hand;
+			border:solid;
+			background-color: #CD853F;
+			border-color: #CD853F;
+			border-radius:100px;
+			font-size:15px;
+			font-weight: bold;
+			text-align: center;
+			color: #8B0000;
+			margin-top: 0%;
+			box-shadow: 2px 2px 2px #000000;
+			}
+		
+		.start:hover {
+			color: black;
+		}
+
+		.buttons{
+		}
+
+		.buttonhome{
+			cursor: hand;
+			border:solid;
+			background-color: #CD853F;
+			border-color: #CD853F;
+			border-radius:150px;
+			font-size:15px;
+			font-weight: bold;
+			text-align: center;
+			color: white;
+			margin-bottom: 0%;
+			box-shadow: 2px 2px 2px #000000;
+			}
+		
+		.buttonhome:hover {
+			color: black;
+		}
+
+		.buttonback{
+			cursor: hand;
+			border:solid;
+			background-color: #CD853F;
+			border-color: #CD853F;
+			border-radius:150px;
+			font-size:15px;
+			font-weight: bold;
+			text-align: center;
+			color: white;
+			margin-bottom: 0%;
+			box-shadow: 2px 2px 2px #000000;
+			}
+		
+		.buttonback:hover {
+			color: black;
+		}
+
+		.buttonlike{
+			cursor: hand;
+			border:solid;
+			background-color: #CD853F;
+			border-color: #CD853F;
+			border-radius:100px;
+			font-size:15px;
+			font-weight: bold;
+			text-align: center;
+			color:#8B0000;
+			box-shadow: 2px 2px 2px #000000;
+			}
+		
+		.buttonlike:hover {
+			color:black;
+		}
+
+		.buttondislike{
+			cursor: hand;
+			border:solid;
+			background-color: #CD853F;
+			border-color: #CD853F;
+			border-radius:100px;
+			font-size:15px;
+			font-weight: bold;
+			text-align: center;
+			color: #8B0000;
+			box-shadow: 2px 2px 2px #000000;
+			}
+		
+		.buttondislike:hover {
+			color: black;
+		}
+		
+		.buttonaddfav{
+			cursor: hand;
+			border:solid;
+			background-color: #CD853F;
+			border-color: #CD853F;
+			border-radius:100px;
+			font-size:15px;
+			font-weight: bold;
+			text-align: center;
+			color:black;
+			box-shadow: 2px 2px 2px #000000;
+		}
+
+		.buttonrefav{
+			cursor: hand;
+			border:solid;
+			background-color: #CD853F;
+			border-color: #CD853F;
+			border-radius:100px;
+			font-size:15px;
+			font-weight: bold;
+			text-align: center;
+			color:#DAA520;
+			box-shadow: 2px 2px 2px #000000;
+		}
+
+	/* Links */
+		
+		.links{
+			background-color: #FAFAD2;
+			border-style: solid;
+			border-radius: 10px;
+			border-color: black;
+			width: 200px;
+			margin-bottom: 2%;
+		}
+	
+		.linkstxtright{
+			height: 100%;
+			background-color: black;
+			border-style: solid;
+			border-color: black;
+			width: 70px;
+			font-family: "Lucida Console", Monaco, monospace; 
+			font-size: 12px;
+			text-align: center;
+			color: #DAA520; 
+			font-weight: bold;
+			}
+
+		.linkstxtleft{
+			height: 100%;
+			background-color: black;
+			border-style: solid;
+			border-color: black;
+			width: 70px;
+			font-family: "Lucida Console", Monaco, monospace; 
+			font-size: 12px;
+			text-align: center;
+			color: #DAA520; 
+			font-weight: bold;
+			}
+
+		.preview{
+			font-family: "Lucida Console", Monaco, monospace; 
+			font-size: 12px;
+			font-weight: bold;
+			color:red;
+			padding: 3px;
+		}
+
+		.buy{
+			font-family: "Lucida Console", Monaco, monospace; 
+			font-size: 12px;
+			font-weight: bold;
+			color:red;
+			padding: 3px;
+		}
+
+		.icon1{
+			margin-top:0;
+		}
+
+		.icon2{
+			margin-top:0;
+		}
+
+		.icon3{
+			margin-top:0;
+		}
+
+		.icon4{
+			margin-top:0;
+		}
+		
+/* <!-- Footer --> */
+	.footer{
+		position:fixed;
+		width:100%;
+		bottom: 0;
+		left:0;
+		border-style: solid;
+		border-color: transparent;
+		box-shadow: 5px 5px 5px #000000;
+		background-color: #800000; 
+		text-align: center;
+		font-family: "Lucida Console", Monaco, monospace; 
+		font-size: 10px;
+		color: white; 
+	}
+
+#fav{
+ display: block;
+ width: 48px;
+ height: 48px;
+
+}
+
+#fav.active{
+}
+
+@media screen and (max-width: 470px){
+	.title{
+		font-size: 20px;
+	}
+	
+	.topnavlink{
+		 font-size: 11px;
+	}
+		
+	.topnavicon{
+		font-size: 11px;
+	}	
+			
+	.search{
+			float: none;
+			line-height: none;
+		}
+	
+	.borderright{
+		padding: 5px 5px 5px 5px;
+	}
+
+	.borderleft{
+		padding: 5px 5px 5px 5px;
+	}
+			
+	.txtintro{
+		font-size: 11px;
+		padding: 1px 3px 0px 0px;
+	}
+	
+	/* titulo livro*/
+	h2{
+		font-size: 12px;
+	}
+	
+	.imagehome{
+			max-width: 200px;
+		}
+	
+	/* autor*/
+	h3{
+		font-size: 12px;
+	}
+
+	/* publisher preço*/	
+	h4{
+		font-size: 10px;
+	}
+	
+	.txt{
+		font-size: 11px;
+		text-align: center;
+		padding: 1px 3px 0px 0px;
+		}
+	
+		.txtresults{
+			font-size: 11px;
+			padding: 1px 3px 0px 0px;
+		}	
+}
+
+/* Butoes */
+
+		.start{
+			font-size:12px;
+			}
+
+		.buttonhome{
+			font-size:12px;
+			}
+
+		.buttonback{
+			font-size:12px;
+			}
+
+		.buttonlike{
+			font-size:11px;
+			}
+
+		.buttondislike{
+			font-size:11px;
+			}
+
+		.buttonaddfav{
+			font-size:11px;
+		}
+
+		.buttonrefav{
+			font-size:11px;
+		}
+
+/* Links */
+		.linkstxtright{
+			font-size: 10px;
+			}
+
+		.linkstxtleft{
+			font-size: 10px;
+			}
+
+		.preview{
+			font-size: 10px;
+		}
+
+		.buy{
+			font-size: 10px;
+		}
